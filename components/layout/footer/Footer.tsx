@@ -2,26 +2,22 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-budokai-dark text-stone-500 py-12">
+    <footer className="bg-budokai-dark text-stone-500 py-4 border-t border-gold-600/40">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col items-center text-center">
-          <div className="flex items-center gap-4 mb-6">
-            <Image
-              src="/dojo-logo.png"
-              alt="Canada Budokai Academy Logo"
-              width={100}
-              height={100}
-              className="h-16 w-auto object-contain brightness-110"
-            />
-            <span className="font-sans font-bold text-xl text-white tracking-widest">
-              CANADA <span className="text-gold-600">BUDOKAI ACADEMY</span>
-            </span>
-          </div>
-          <p className="max-w-xl text-xs leading-relaxed mb-6 text-stone-400 italic">
-            Preserving the lineage of Shorinji-ryu and the Aiki traditions
-            across Canada.
-          </p>
-          <div className="flex gap-4 mb-8">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col items-center text-center gap-6 md:flex-row md:items-center md:justify-between md:text-left">
+            <div className="flex items-center gap-2 lg:gap-4 cursor-pointer transition-all duration-300">
+              <Image
+                src="/dojo-logo.png"
+                alt="Canada Budokai Academy Logo"
+                width={100}
+                height={100}
+                className="h-16 w-auto object-contain brightness-110"
+              />
+              <span className="font-sans font-bold text-xl text-white tracking-widest">
+                CANADA <span className="text-gold-600">BUDOKAI ACADEMY</span>
+              </span>
+            </div>
             <a
               href="https://www.facebook.com/carsadojo"
               target="_blank"
@@ -40,6 +36,10 @@ export default function Footer() {
               </svg>
             </a>
           </div>
+          <p className="max-w-xl text-xs leading-relaxed text-stone-400 italic text-center md:text-left">
+            Preserving the lineage of Shorinji-ryu and the Aiki traditions
+            across Canada.
+          </p>
         </div>
         <div className="text-center pt-8 border-t border-stone-900 text-[9px] uppercase font-bold tracking-[0.4em] text-stone-600">
           &copy; {new Date().getFullYear()} CANADA BUDOKAI ACADEMY.

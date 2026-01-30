@@ -1,6 +1,6 @@
 "use client";
 
-import HeroScene from "@/components/main/HeroScene";
+import HeroScene from "@/components/home/HeroScene";
 
 function scrollToSection(id: string) {
   const element = document.getElementById(id);
@@ -37,20 +37,12 @@ export default function HeroSection() {
           physical strength and mental clarity through classical Budo training.
         </p>
 
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-          <button
-            onClick={() => scrollToSection("about")}
-            className="px-12 py-4 bg-gold-600 hover:bg-white text-budokai-dark rounded-full transition-all font-bold tracking-widest text-xs shadow-2xl hover:scale-105 active:scale-95 uppercase"
-          >
-            Explore the Systems
-          </button>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="px-12 py-4 bg-transparent hover:bg-white/10 text-white border border-gold-600/50 rounded-full transition-all font-bold tracking-widest text-xs backdrop-blur-md uppercase"
-          >
-            Contact the Dojo
-          </button>
-        </div>
+        <button
+          onClick={() => scrollToSection("about")}
+          className="px-12 py-4 bg-gold-600 hover:bg-white text-budokai-dark rounded-full transition-all font-bold tracking-widest text-xs shadow-2xl hover:scale-105 active:scale-95 uppercase"
+        >
+          Explore the Systems
+        </button>
       </div>
     </div>
   );
