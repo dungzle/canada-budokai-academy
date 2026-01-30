@@ -1,13 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import DropdownLink from "@/components/header/DropdownLink";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+import DropdownLink from "@/components/layout/header/DropdownLink";
 
 interface NavLink {
   label: string;
   id: string;
+  href?: string;
 }
 
 interface NavLinks {
@@ -17,11 +20,31 @@ interface NavLinks {
 
 const NAV_LINKS: NavLinks = {
   about: [
-    { label: "What We Do", id: "what-we-do" },
-    { label: "Our Mission", id: "our-mission" },
-    { label: "Our Philosophy", id: "our-philosophy" },
-    { label: "Instructors", id: "instructors" },
-    { label: "The Dai Nippon Butokukai", id: "dnbk" },
+    {
+      label: "What We Do",
+      id: "what-we-do",
+      href: "/about/what-we-do",
+    },
+    {
+      label: "Our Mission",
+      id: "our-mission",
+      href: "/about/our-mission",
+    },
+    {
+      label: "Our Philosophy",
+      id: "our-philosophy",
+      href: "/about/our-philosophy",
+    },
+    {
+      label: "Instructors",
+      id: "instructors",
+      href: "/about/instructors",
+    },
+    {
+      label: "The Dai Nippon Butokukai",
+      id: "dnbk",
+      href: "/about/dnbk",
+    },
   ],
   program: [
     { label: "Adult Beginner Class", id: "adult-beginner" },
@@ -61,12 +84,13 @@ export default function Header() {
   return (
     <header className="font-sans font-bold text-xl">
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-40 transition-all duration-500 bg-budokai-dark backdrop-blur-md shadow-2xl py-3">
+      <nav className="fixed top-0 left-0 right-0 z-40 transition-all duration-500 bg-budokai-dark backdrop-blur-md shadow-2xl py-3 border-b border-gold-600/40">
         <div className="container mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
-          <div
-            className="flex items-center gap-2 lg:gap-4 cursor-pointer transition-all duration-300"
+          <Link
+            href="/"
             onClick={handleLogoClick}
+            className="flex items-center gap-2 lg:gap-4 cursor-pointer transition-all duration-300"
           >
             <Image
               src="/dojo-logo.png"
@@ -78,7 +102,7 @@ export default function Header() {
             <span className="font-sans font-bold text-sm lg:text-xl tracking-tight transition-all duration-300 text-white wrap-break-word">
               CANADA <span className="text-gold-600">BUDOKAI ACADEMY</span>
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-[0.2em] transition-colors text-white">
@@ -157,15 +181,26 @@ export default function Header() {
                 About
               </h4>
               <div className="flex flex-col gap-4 pl-4 border-l border-white/10">
-                {NAV_LINKS.about.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="text-left text-white/70 hover:text-gold-600 uppercase text-xs tracking-widest transition-colors"
-                  >
-                    {item.label}
-                  </button>
-                ))}
+                {NAV_LINKS.about.map((item) =>
+                  item.href ? (
+                    <Link
+                      key={item.id}
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="text-left text-white/70 hover:text-gold-600 uppercase text-xs tracking-widest transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className="text-left text-white/70 hover:text-gold-600 uppercase text-xs tracking-widest transition-colors"
+                    >
+                      {item.label}
+                    </button>
+                  ),
+                )}
               </div>
             </div>
 
