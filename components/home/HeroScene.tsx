@@ -1,16 +1,8 @@
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
-import {
-  ContactShadows,
-  Environment,
-  Float,
-  Sparkles,
-  Sphere,
-  Stars,
-  Torus,
-} from "@react-three/drei";
-import { Canvas, RootState, useFrame } from "@react-three/fiber";
+import { Stars } from "@react-three/drei";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 
 const SHOOTING_STAR_DIRECTION = new THREE.Vector3(-1, -0.3, -0.8).normalize();
 const SHOOTING_STAR_ROTATION = new THREE.Quaternion().setFromUnitVectors(
@@ -18,94 +10,14 @@ const SHOOTING_STAR_ROTATION = new THREE.Quaternion().setFromUnitVectors(
   SHOOTING_STAR_DIRECTION,
 );
 
-const ParticleWave = () => {
-  const ref = useRef<THREE.Group>(null);
-  const getParticlePosition = (index: number): [number, number, number] => {
-    const prng = (seed: number) => {
-      const x = Math.sin(seed) * 43758.5453;
-      return x - Math.floor(x);
-    };
-    const base = index + 1;
-    return [
-      (prng(base * 12.9898) - 0.5) * 15,
-      (prng(base * 78.233) - 0.5) * 15,
-      (prng(base * 39.425) - 0.5) * 15,
-    ];
-  };
-
-  useFrame((state: RootState) => {
-    if (ref.current) {
-      const t = state.clock.getElapsedTime();
-      ref.current.rotation.y = t * 0.05;
-      ref.current.rotation.z = Math.sin(t * 0.1) * 0.05;
-    }
-  });
-
-  return (
-    <group ref={ref}>
-      {Array.from({ length: 200 }).map((_, i) => (
-        <Sphere key={i} args={[0.015, 8, 8]} position={getParticlePosition(i)}>
-          <meshBasicMaterial
-            color={i % 3 === 0 ? "#C5A059" : "#ffffff"}
-            transparent
-            opacity={0.3}
-          />
-        </Sphere>
-      ))}
-    </group>
-  );
-};
-
-const ZenCairn = ({ position }: { position: [number, number, number] }) => {
-  const ref = useRef<THREE.Group>(null);
-  useFrame((state: RootState) => {
-    if (ref.current) {
-      ref.current.position.y =
-        position[1] + Math.sin(state.clock.getElapsedTime() * 0.5) * 0.1;
-    }
-  });
-
-  return (
-    <group ref={ref} position={position}>
-      {/* Stacked stones */}
-      <mesh position={[0, -0.4, 0]} scale={[1.2, 0.4, 1]}>
-        <sphereGeometry args={[1, 32, 32]} />
-        <meshStandardMaterial color="#1a1c1c" roughness={0.8} />
-      </mesh>
-      <mesh position={[0, 0, 0]} scale={[0.8, 0.35, 0.7]}>
-        <sphereGeometry args={[1, 32, 32]} />
-        <meshStandardMaterial color="#2d2d2d" roughness={0.7} />
-      </mesh>
-      <mesh position={[0.1, 0.35, 0]} scale={[0.5, 0.3, 0.5]}>
-        <sphereGeometry args={[1, 32, 32]} />
-        <meshStandardMaterial color="#1a1c1c" roughness={0.6} />
-      </mesh>
-      <mesh position={[-0.05, 0.6, 0.05]} scale={[0.3, 0.25, 0.3]}>
-        <sphereGeometry args={[1, 32, 32]} />
-        <meshStandardMaterial color="#2d2d2d" roughness={0.5} />
-      </mesh>
-    </group>
-  );
-};
-
 const EnsoRing = () => {
-  const ref = useRef<THREE.Mesh>(null);
-  useFrame((state: RootState) => {
-    if (ref.current) {
-      ref.current.rotation.z = state.clock.getElapsedTime() * 0.1;
-    }
-  });
-
+  const { viewport } = useThree();
+  const radius = Math.min(Math.max(viewport.width * 0.5, 3), 4);
   return (
-    <Torus ref={ref} args={[3.5, 0.01, 16, 100]} rotation={[0, 0, 0]}>
-      <meshStandardMaterial
-        color="#C5A059"
-        emissive="#C5A059"
-        emissiveIntensity={1.5}
-        transparent
-        opacity={0.4}
-      />
-    </Torus>
+    <mesh>
+      <ringGeometry args={[radius - 0.03, radius, 128]} />
+      <meshBasicMaterial color="#C5A059" transparent opacity={0.8} />
+    </mesh>
   );
 };
 
@@ -113,7 +25,7 @@ const ShootingStars = () => {
   const groupRef = useRef<THREE.Group>(null);
   const starsData = useMemo(
     () =>
-      Array.from({ length: 16 }, (_, i) => {
+      Array.from({ length: 12 }, (_, i) => {
         const prng = (seed: number) => {
           const x = Math.sin(seed) * 43758.5453;
           return x - Math.floor(x);
@@ -191,56 +103,52 @@ const ShootingStars = () => {
 };
 
 export default function HeroScene() {
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handleChange = () => setReduceMotion(mediaQuery.matches);
+    handleChange();
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
   return (
-    <div className="w-full h-full absolute inset-0 bg-[#070b0a]">
-      <Canvas camera={{ position: [0, 0, 12], fov: 45 }}>
-        <fog attach="fog" args={["#070b0a", 5, 25]} />
-        <ambientLight intensity={0.2} />
-        <pointLight position={[5, 5, 5]} intensity={1} color="#C5A059" />
-        <spotLight
-          position={[-10, 10, 10]}
-          angle={0.15}
-          penumbra={1}
-          intensity={1}
-          color="#ffffff"
-        />
-
-        <Float speed={2} rotationIntensity={0.1} floatIntensity={0.2}>
-          <ParticleWave />
+    <div
+      className="w-full h-full absolute inset-0 bg-[#070b0a]"
+      aria-hidden="true"
+    >
+      {reduceMotion ? (
+        <div className="w-full h-full bg-gradient-to-b from-budokai-dark via-budokai-charcoal/40 to-budokai-dark" />
+      ) : (
+        <Canvas
+          camera={{ position: [0, 0, 12], fov: 45 }}
+          dpr={[1, 1.5]}
+          gl={{ powerPreference: "low-power", antialias: true }}
+        >
+          <fog attach="fog" args={["#070b0a", 6, 22]} />
+          <ambientLight intensity={0.2} />
+          <pointLight position={[5, 5, 5]} intensity={0.8} color="#C5A059" />
+          <spotLight
+            position={[-10, 10, 10]}
+            angle={0.15}
+            penumbra={1}
+            intensity={0.8}
+            color="#ffffff"
+          />
           <EnsoRing />
-          <ZenCairn position={[0, -1, 0]} />
-        </Float>
-
-        <ShootingStars />
-
-        <Sparkles
-          count={60}
-          scale={[15, 10, 10]}
-          size={1.5}
-          speed={0.1}
-          color="#C5A059"
-          opacity={0.3}
-        />
-
-        <ContactShadows
-          position={[0, -3.5, 0]}
-          opacity={0.4}
-          scale={20}
-          blur={2}
-          far={4.5}
-        />
-
-        <Stars
-          radius={100}
-          depth={50}
-          count={3000}
-          factor={4}
-          saturation={0}
-          fade
-          speed={0.2}
-        />
-        <Environment preset="night" />
-      </Canvas>
+          <ShootingStars />
+          <Stars
+            radius={80}
+            depth={30}
+            count={1200}
+            factor={6}
+            fade
+            speed={0.2}
+          />
+        </Canvas>
+      )}
     </div>
   );
 }

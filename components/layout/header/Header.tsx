@@ -21,19 +21,14 @@ interface NavLinks {
 const NAV_LINKS: NavLinks = {
   about: [
     {
-      label: "What We Do",
-      id: "what-we-do",
-      href: "/about/what-we-do",
-    },
-    {
-      label: "Our Mission",
-      id: "our-mission",
-      href: "/about/our-mission",
-    },
-    {
       label: "Our Philosophy",
       id: "our-philosophy",
       href: "/about/our-philosophy",
+    },
+    {
+      label: "Our Training",
+      id: "our-training",
+      href: "/about/our-training",
     },
     {
       label: "Instructors",
@@ -41,7 +36,7 @@ const NAV_LINKS: NavLinks = {
       href: "/about/instructors",
     },
     {
-      label: "The Dai Nippon Butokukai",
+      label: "The Dai Nippon Butoku Kai",
       id: "dnbk",
       href: "/about/dnbk",
     },
@@ -84,8 +79,8 @@ export default function Header() {
   return (
     <header className="font-sans font-bold text-xl">
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-40 transition-all duration-500 bg-budokai-dark backdrop-blur-md shadow-2xl py-3 border-b border-gold-600/40">
-        <div className="container mx-auto px-6 flex justify-between items-center">
+      <nav className="fixed top-0 left-0 right-0 z-40 h-[var(--header-height)] transition-all duration-500 bg-budokai-dark backdrop-blur-md shadow-2xl border-b border-gold-600/40">
+        <div className="container mx-auto px-6 h-full flex justify-between items-center">
           {/* Logo */}
           <Link
             href="/"
@@ -97,25 +92,23 @@ export default function Header() {
               alt="Canada Budokai Academy Logo"
               width={100}
               height={100}
-              className={`transition-all duration-500 ${scrolled ? "h-8 lg:h-10" : "h-10 lg:h-14"} w-auto object-contain shrink-0`}
+              className={`transition-all duration-500 h-10 md:h-14 w-auto object-contain shrink-0`}
             />
-            <span className="font-sans font-bold text-sm lg:text-xl tracking-tight transition-all duration-300 text-white wrap-break-word">
+            <span className="font-sans font-bold text-sm md:text-xl tracking-tight transition-all duration-300 text-white wrap-break-word">
               CANADA <span className="text-gold-600">BUDOKAI ACADEMY</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-[0.2em] transition-colors text-white">
+          <div className="hidden lg:flex items-center gap-8 text-xs font-bold tracking-[0.2em] transition-colors text-white">
             <DropdownLink
               title="About"
               items={NAV_LINKS.about}
-              scrolled={scrolled}
               onClick={scrollToSection}
             />
             <DropdownLink
               title="Program"
               items={NAV_LINKS.program}
-              scrolled={scrolled}
               onClick={scrollToSection}
             />
             <button
@@ -124,12 +117,12 @@ export default function Header() {
             >
               Schedule
             </button>
-            <button
-              onClick={() => scrollToSection("faq")}
+            <Link
+              href="/faq"
               className="hover:text-gold-600 transition-colors uppercase cursor-pointer"
             >
               FAQ
-            </button>
+            </Link>
             <button
               onClick={() => scrollToSection("contact")}
               className="px-6 py-2.5 bg-gold-600 text-budokai-dark rounded-full hover:bg-white transition-all shadow-md cursor-pointer uppercase"
@@ -230,12 +223,13 @@ export default function Header() {
               >
                 Schedule
               </button>
-              <button
-                onClick={() => scrollToSection("faq")}
+              <Link
+                href="/faq"
+                onClick={() => setMenuOpen(false)}
                 className="block text-left text-white hover:text-gold-600 uppercase text-sm font-bold tracking-widest transition-colors"
               >
                 FAQ
-              </button>
+              </Link>
             </div>
             <button
               onClick={() => scrollToSection("contact")}

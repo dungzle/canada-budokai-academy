@@ -1,18 +1,16 @@
-import { useState } from "react";
-import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 interface DropdownLinkProps {
   title: string;
   items: { label: string; id: string; href?: string }[];
-  scrolled: boolean;
   onClick: (id: string) => void;
 }
 
 export default function DropdownLink({
   title,
   items,
-  scrolled,
   onClick,
 }: DropdownLinkProps) {
   const [isOpen, setIsOpen] = useState(false);

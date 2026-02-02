@@ -1,10 +1,6 @@
-"use client";
+import Link from "next/link";
 
 export default function PhilosophySection() {
-  const handleLearnMore = () => {
-    // TODO: Add navigation or modal logic
-    console.log("Learn More clicked");
-  };
   return (
     <section id="about" className="py-24 bg-white">
       <div className="container mx-auto px-6 max-w-5xl">
@@ -74,12 +70,12 @@ export default function PhilosophySection() {
         </div>
 
         <div className="mt-20 text-center">
-          <button
-            onClick={handleLearnMore}
-            className="px-10 py-4 bg-budokai-dark text-gold-600 rounded-full hover:bg-gold-600 hover:text-white transition-all font-bold tracking-widest text-sm uppercase border border-gold-600/30"
+          <Link
+            href="/about/our-philosophy"
+            className="inline-flex items-center justify-center px-10 py-4 bg-budokai-dark text-gold-600 rounded-full hover:bg-gold-600 hover:text-white transition-all font-bold tracking-widest text-sm uppercase border border-gold-600/30"
           >
             Learn More
-          </button>
+          </Link>
         </div>
       </div>
     </section>
