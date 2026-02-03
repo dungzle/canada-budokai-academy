@@ -2,7 +2,6 @@
 const nextConfig = {
   output: "export",
   basePath: "/canada-budokai-academy",
-  assetPrefix: "/canada-budokai-academy",
   images: {
     unoptimized: true,
   },
