@@ -1,12 +1,12 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Training | Canada Budokai Academy",
+  title: "Our Practice | Canada Budokai Academy",
   description:
     "A complete, lineage-based martial arts system rooted in traditional Budo.",
 };
 
-export default function OurTraining() {
+export default function OurPractice() {
   return (
     <main className="text-[var(--foreground)]">
       {/* HERO */}
@@ -17,7 +17,7 @@ export default function OurTraining() {
           </span>
 
           <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl lg:text-7xl font-semibold tracking-[0.03em] text-gold-600 font-serif">
-            Our Training
+            Our Practice
           </h1>
 
           <div className="w-24 h-1 bg-gold-600 mt-6" />
@@ -68,10 +68,11 @@ export default function OurTraining() {
                 <div className="h-px w-12 bg-gold-500 mt-3 mb-4" />
                 <p>
                   Students are exposed to a range of classical disciplines that
-                  complement the core system. These include Daito-Ryu
-                  Aki-Jujitsu for close-range control and grappling, Kobujutsu
-                  for traditional weapons training, and internal practices such
-                  as Tai Chi Chuan, Chi Kung, and Bagua Zhang.
+                  complement the core system. These include Meibukan Goju Ryu
+                  Karate-do, Daito-Ryu Aki-Jujitsu for close-range control and
+                  grappling, Kobujutsu for traditional weapons training, and
+                  internal practices such as Tai Chi Chuan, Chi Kung, and Bagua
+                  Zhang.
                 </p>
               </div>
 
@@ -97,12 +98,9 @@ export default function OurTraining() {
                 <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-600">
                   Disciplines
                 </h3>
-                <p className="mt-3 text-neutral-600 text-sm">
-                  Training draws from multiple classical disciplines, unified
-                  into a single system:
-                </p>
                 <ul className="mt-4 space-y-3 text-neutral-600 text-sm">
                   <li>Shorinji Ryu Karate-do</li>
+                  <li>Meibukan Goju Ryu Karate-do</li>
                   <li>Daito-Ryu Aki-Jujitsu</li>
                   <li>Kobujutsu (classical weapons)</li>
                   <li>Da Jia Tai Chi Chuan</li>

@@ -26,9 +26,9 @@ const NAV_LINKS: NavLinks = {
       href: "/about/our-philosophy",
     },
     {
-      label: "Our Training",
-      id: "our-training",
-      href: "/about/our-training",
+      label: "Our Practice",
+      id: "our-practice",
+      href: "/about/our-practice",
     },
     {
       label: "Instructors",

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
+
 import StoryGallery from "@/components/about/StoryGallery";
 
 export const metadata: Metadata = {
@@ -104,8 +105,8 @@ export default function Instructors() {
             <p className="text-neutral-600 text-sm leading-relaxed">
               Training in classical Budo is a lifelong pursuit. Sensei Usatch
               continues to travel and study with instructors across Canada, the
-              United States, Japan, and Okinawa, deepening his understanding of
-              Karate through direct experience and instruction.
+              United States, mainland Japan, and Okinawa, deepening his
+              understanding of Karate through direct experience and instruction.
             </p>
           </div>
 
@@ -115,7 +116,18 @@ export default function Instructors() {
                 images: ["/hanshi-mark-kyoto.jpg"],
                 title: "Hanshi Richard Mark",
                 intro:
-                  "Hanshi Richard Mark in Kyoto, Japan — Sensei Usatch's primary instructor and mentor for over 25 years.",
+                  "Hanshi Richard Mark is the Chief Instructor of Shaolin-Tzu Martial Arts Academy and the Western Canada Representative of the Dai Nippon Butoku Kai, International Division. He has been Sensei Usatch’s primary instructor and mentor for over 25 years, guiding his study of Shorinji-ryu Karate-do, Okinawan Kobudo, and classical budo.",
+              },
+              {
+                images: ["/hanshi-hokama.jpg"],
+                title: "Hanshi Tetsuhiro Hokama",
+                intro: "TO-DO",
+              },
+              {
+                images: ["/meibukan-karatedo.jpg"],
+                title: "Hanshi Akihito Yagi",
+                intro:
+                  "Training Meibukan Goju-ryu Karate-do under Hanshi Akihito Yagi",
               },
               {
                 images: [
@@ -125,17 +137,6 @@ export default function Instructors() {
                 title: "Sensei Patrick McCarthy",
                 intro:
                   "Training with Hanshi Patrick McCarthy, a leading authority in classical Okinawan Karate",
-              },
-              {
-                images: ["/meibukan-karatedo.jpg"],
-                title: "Hanshi Akihito Yagi",
-                intro: "Training Meibukan Karate under Hanshi Akihito Yagi",
-              },
-              {
-                images: ["/shihan-dan-antonsen.jpg"],
-                title: "Shihan Dan Antonsen",
-                intro:
-                  "Continuing instruction with Shihan Dan Antonsen to refine technical depth and teaching.",
               },
               {
                 images: ["/sensei-receive-godan.jpg"],

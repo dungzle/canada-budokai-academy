@@ -29,7 +29,7 @@ function TrainingSchedule() {
       {schedules.map((item, idx) => (
         <div
           key={idx}
-          className="bg-stone-50 p-8 rounded-3xl border border-stone-200 hover:border-gold-600/40 hover:bg-white hover:-translate-y-2 hover:shadow-xl transition-all duration-300 group relative overflow-hidden shadow-sm"
+          className="bg-stone-50 p-8 rounded-3xl border border-stone-200 relative overflow-hidden shadow-sm"
         >
           <div className="flex items-center gap-2 text-gold-600 mb-4">
             <Calendar size={20} />
@@ -37,7 +37,7 @@ function TrainingSchedule() {
               {item.day}
             </span>
           </div>
-          <h4 className="text-xl text-budokai-dark transition-colors h-14 line-clamp-2">
+          <h4 className="text-xl text-budokai-dark h-14 line-clamp-2">
             {item.arts}
           </h4>
           <div className="space-y-2">
@@ -56,23 +56,27 @@ function TrainingSchedule() {
   );
 }
 
-export default function TrainingSection() {
+export default function ScheduleSection() {
   return (
-    <section id="training" className="py-24 bg-white">
+    <section id="schedule" className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-20">
           <h2 className="font-serif text-4xl md:text-5xl text-budokai-dark italic mb-6">
             Class Schedule
           </h2>
-          <p className="text-stone-600 text-lg italic">
-            "A thousand miles begins with a single step." Join us in the Dojo.
+          <p className="text-lg text-stone-600 leading-relaxed max-w-4xl mx-auto">
+            &ldquo;A journey of a thousand miles begins with a single
+            step.&rdquo;
           </p>
         </div>
+
         <TrainingSchedule />
+
         <div className="mt-12 text-center max-w-2xl mx-auto">
           <p className="text-stone-800 italic text-md border-t border-stone-100 pt-12">
-            Classes available for all ages and skill levels. First trial class
-            is always free.
+            Classes are open to students ages 7 and up, with no prior experience
+            required. New students are welcome to attend a complimentary trial
+            class.
           </p>
         </div>
       </div>

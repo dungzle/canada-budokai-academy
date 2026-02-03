@@ -63,7 +63,7 @@ export default function DNBK() {
             <div className="lg:col-span-6 flex lg:justify-end">
               <div className="w-full max-w-2xl">
                 <Image
-                  src="/kyoto-butokuden2.jpg"
+                  src="/kyoto-butokuden.jpg"
                   alt="Butokuden - Kyoto, Japan"
                   width={1200}
                   height={1200}

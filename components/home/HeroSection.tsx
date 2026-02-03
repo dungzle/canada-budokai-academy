@@ -20,10 +20,6 @@ function scrollToSection(id: string) {
 }
 
 export default function HeroSection() {
-  const handleLearnMore = () => {
-    // TODO: Add navigation or modal logic
-    console.log("Learn More clicked");
-  };
   return (
     <div className="relative h-[calc(100svh-var(--header-height))] min-h-[calc(100svh-var(--header-height))] flex items-center justify-center bg-budokai-dark">
       <HeroScene />
@@ -41,9 +37,9 @@ export default function HeroSection() {
             </span>
           </h1>
           <p className="max-w-2xl text-[clamp(0.95rem,2.2vw,1.1rem)] text-stone-400 font-light leading-relaxed">
-            Comprehensive martial self-defense, history, and philosophy. Achieve
-            physical strength and mental clarity through classical Budo
-            training.
+            Classical martial training integrating self-defense, history, and
+            philosophy. Cultivate physical strength, mental clarity, and
+            composure through traditional Budo practice.
           </p>
 
           <button
