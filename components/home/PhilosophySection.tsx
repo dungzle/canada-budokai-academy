@@ -1,10 +1,6 @@
-"use client";
+import Link from "next/link";
 
 export default function PhilosophySection() {
-  const handleLearnMore = () => {
-    // TODO: Add navigation or modal logic
-    console.log("Learn More clicked");
-  };
   return (
     <section id="about" className="py-24 bg-white">
       <div className="container mx-auto px-6 max-w-5xl">
@@ -15,11 +11,13 @@ export default function PhilosophySection() {
           <h2 className="font-serif text-4xl md:text-6xl mb-10 leading-tight text-budokai-dark italic">
             The Spirit of Budo
           </h2>
-          <p className="text-lg text-stone-600 leading-relaxed max-w-3xl mx-auto">
-            At Canada Budokai Academy, our training is a journey of
-            self-discovery. We utilize the ancient principles of{" "}
-            <strong>Nin, Shu, and Cho</strong> to guide students from physical
-            proficiency to spiritual enlightenment.
+          <p className="text-lg text-stone-600 leading-relaxed max-w-4xl mx-auto">
+            At Canada Budokai Academy, training is rooted in{" "}
+            <strong>Budo</strong> as a lifelong way of life. Guided by the
+            classical progression of <strong>Nin</strong>, <strong>Shu</strong>,
+            and <strong>Cho</strong>, practice supports self-discovery,
+            spiritual development, and the maturation of character through
+            sustained effort.
           </p>
         </div>
 
@@ -65,21 +63,21 @@ export default function PhilosophySection() {
                 Cho • Transcendence
               </h4>
               <p className="text-base text-stone-500 leading-relaxed max-w-2xl">
-                To transcend one's own limitations, rising above the ego to find
-                the higher self. The ultimate goal where art and life become
-                indistinguishable.
+                To transcend one&apos;s own limitations, rising above the ego to
+                find the higher self. The ultimate goal where art and life
+                become indistinguishable.
               </p>
             </div>
           </div>
         </div>
 
         <div className="mt-20 text-center">
-          <button
-            onClick={handleLearnMore}
-            className="px-10 py-4 bg-budokai-dark text-gold-600 rounded-full hover:bg-gold-600 hover:text-white transition-all font-bold tracking-widest text-sm uppercase border border-gold-600/30"
+          <Link
+            href="/about/our-philosophy"
+            className="inline-flex items-center justify-center px-10 py-4 bg-budokai-dark text-gold-600 rounded-full hover:bg-gold-600 hover:text-white transition-all font-bold tracking-widest text-sm uppercase border border-gold-600/30"
           >
             Learn More
-          </button>
+          </Link>
         </div>
       </div>
     </section>

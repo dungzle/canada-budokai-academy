@@ -1,8 +1,8 @@
-import CurriculumSection from "@/components/home/CurriculumSection";
 import FAQSection from "@/components/home/FAQSection";
 import HeroSection from "@/components/home/HeroSection";
 import PhilosophySection from "@/components/home/PhilosophySection";
-import TrainingSection from "@/components/home/TrainingSection";
+import PracticeSection from "@/components/home/PracticeSection";
+import ScheduleSection from "@/components/home/ScheduleSection";
 
 export default function Home() {
   return (
@@ -10,8 +10,8 @@ export default function Home() {
       <main>
         <HeroSection />
         <PhilosophySection />
-        <CurriculumSection />
-        <TrainingSection />
+        <PracticeSection />
+        <ScheduleSection />
         <FAQSection />
       </main>
     </div>
