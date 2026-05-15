@@ -28,7 +28,7 @@ export default function PhilosophySection() {
             </div>
             <div>
               <h4 className="text-xs uppercase font-bold tracking-[0.3em] text-budokai-dark mb-2">
-                Nin • Endurance
+                Nin • Endure
               </h4>
               <p className="text-base text-stone-500 leading-relaxed max-w-2xl">
                 To endure hardships with a calm heart; developing unshakeable
@@ -44,12 +44,12 @@ export default function PhilosophySection() {
             </div>
             <div>
               <h4 className="text-xs uppercase font-bold tracking-[0.3em] text-budokai-dark mb-2">
-                Shu • Discipline
+                Shu • Train
               </h4>
               <p className="text-base text-stone-500 leading-relaxed max-w-2xl">
-                To cultivate the self through rigorous practice, refining both
-                the spirit and the flesh. Mastery is not a destination, but a
-                continuous process of polish.
+                To cultivate the self through rigorous training, refining both
+                the body and the spirit. Mastery is not a destination, but a
+                continuous process of growth.
               </p>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function PhilosophySection() {
             </div>
             <div>
               <h4 className="text-xs uppercase font-bold tracking-[0.3em] text-budokai-dark mb-2">
-                Cho • Transcendence
+                Cho • Transcend
               </h4>
               <p className="text-base text-stone-500 leading-relaxed max-w-2xl">
                 To transcend one&apos;s own limitations, rising above the ego to

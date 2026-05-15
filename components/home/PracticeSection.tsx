@@ -53,8 +53,13 @@ export default function PracticeSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
           <ArtCard
             title="Shorinji-ryu Karate-do"
-            desc="The core discipline of our practice, emphasizing correct structure, timing, distancing, and judgment through classical Budo principles."
+            desc="Founded by Sensei Richard Kim, Shorinji-ryu Karate-do is the core discipline of our practice, emphasizing correct structure, timing, distancing, and judgment through classical Budo principles."
             tags={["KARATE-DO", "BUDO"]}
+          />
+          <ArtCard
+            title="Meibukan Goju-ryu Karate-do"
+            desc="A traditional Okinawan karate style founded by Meitoku Yagi, a direct student of Goju-Ryu creator Chojun Miyagi. It blends hard external techniques with soft internal methods to create a close-range, highly efficient system of self-defense."
+            tags={["KARATE-DO", "GOJU-RYU"]}
           />
           <ArtCard
             title="Kobujutsu"

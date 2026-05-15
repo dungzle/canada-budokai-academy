@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
 import { Minus, Plus } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 interface FAQItem {
   id: string;
@@ -31,7 +31,7 @@ const FAQ_DATA: FAQItem[] = [
     id: "clothing",
     question: "What should I wear for my first class?",
     answer:
-      "For your trial class, comfortable athletic clothing (like a t-shirt and track pants) is perfect. We train barefoot on tatami mats.",
+      "For your trial class, comfortable athletic clothing (like a t-shirt and track pants) is perfect",
   },
   {
     id: "frequency",
@@ -90,11 +90,8 @@ export default function FAQSection() {
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-4 text-xs font-bold tracking-widest text-gold-600 uppercase">
-            Questions
-          </div>
           <h2 className="font-serif text-4xl md:text-6xl text-budokai-dark mb-6 italic">
-            Common Inquiries
+            FAQs
           </h2>
         </div>
 

@@ -94,64 +94,36 @@ export default function Instructors() {
         </div>
       </section>
 
-      {/* TRAINING & TRAVEL GALLERY */}
-      <section className="py-16 md:py-20 bg-[var(--background)]">
+      <section className="py-16 md:py-20">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mb-10">
-            <h2 className="text-xl md:text-2xl font-serif font-semibold text-neutral-900">
-              Lifelong Study & Travel
-            </h2>
-            <div className="h-px w-12 bg-gold-500 mt-3 mb-4" />
-            <p className="text-neutral-600 text-sm leading-relaxed">
-              Training in classical Budo is a lifelong pursuit. Sensei Usatch
-              continues to travel and study with instructors across Canada, the
-              United States, mainland Japan, and Okinawa, deepening his
-              understanding of Karate through direct experience and instruction.
-            </p>
-          </div>
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
+            {/* TEXT */}
+            <div className="lg:col-span-9 space-y-4">
+              <h2 className="text-2xl font-serif font-semibold text-neutral-900">
+                Senpai Viet Le
+              </h2>
 
-          <StoryGallery
-            stories={[
-              {
-                images: ["/hanshi-mark-kyoto.jpg"],
-                title: "Hanshi Richard Mark",
-                intro:
-                  "Hanshi Richard Mark is the Chief Instructor of Shaolin-Tzu Martial Arts Academy and the Western Canada Representative of the Dai Nippon Butoku Kai, International Division. He has been Sensei Usatch’s primary instructor and mentor for over 25 years, guiding his study of Shorinji-ryu Karate-do, Okinawan Kobudo, and classical budo.",
-              },
-              {
-                images: ["/hanshi-hokama.jpg"],
-                title: "Hanshi Tetsuhiro Hokama",
-                intro: "TO-DO",
-              },
-              {
-                images: ["/meibukan-karatedo.jpg"],
-                title: "Hanshi Akihito Yagi",
-                intro:
-                  "Training Meibukan Goju-ryu Karate-do under Hanshi Akihito Yagi",
-              },
-              {
-                images: [
-                  "/hanshi-pat-mccarthy.jpg",
-                  "/hanshi-pat-mccarthy-hamahiga-island.jpg",
-                ],
-                title: "Sensei Patrick McCarthy",
-                intro:
-                  "Training with Hanshi Patrick McCarthy, a leading authority in classical Okinawan Karate",
-              },
-              {
-                images: ["/sensei-receive-godan.jpg"],
-                title: "Godan in Kyoto",
-                intro:
-                  "Receiving Godan in Kyoto, honoring a milestone of dedication and study.",
-              },
-              {
-                images: ["/instructor-of-year.jpg"],
-                title: "Instructor of the Year",
-                intro:
-                  "Recognized as Instructor of the Year — February 2023 at the 28th Winter Training Festival for leadership and service.",
-              },
-            ]}
-          />
+              <p className="text-neutral-600 text-sm leading-relaxed">
+                Senpai Viet Le is the Assistant Instructor of the CARSA Shorinji
+                Ryu Academy at the University of Victoria. He began his martial
+                arts training in 2017 and has remained a dedicated student and
+                practitioner ever since. He is the first student generation of
+                Sensei Usatch since he started teaching in University of
+                Victoria.
+              </p>
+
+              <p className="text-neutral-600 text-sm leading-relaxed">
+                He currently holds the an international rank of{" "}
+                <strong>Nidan</strong> (2nd degree black belt) in Shorinji-Ryu
+                Karate-Do.
+              </p>
+            </div>
+
+            {/* PORTRAIT */}
+            <div className="flex lg:col-span-3 lg:justify-end">
+              Photo coming soon
+            </div>
+          </div>
         </div>
       </section>
     </main>
