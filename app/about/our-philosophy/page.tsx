@@ -85,7 +85,7 @@ export default function OurPhilosophy() {
               <div className="text-7xl text-gold-600 min-w-[96px]">忍</div>
               <div>
                 <h3 className="text-sm uppercase font-semibold tracking-[0.3em] text-neutral-900">
-                  Nin — Endurance
+                  Nin — Endure
                 </h3>
                 <p className="mt-3">
                   Nin represents the ability to endure hardship with composure.
@@ -101,7 +101,7 @@ export default function OurPhilosophy() {
               <div className="text-7xl text-gold-600 min-w-[96px]">修</div>
               <div>
                 <h3 className="text-sm uppercase font-semibold tracking-[0.3em] text-neutral-900">
-                  Shu — Discipline
+                  Shu — Train
                 </h3>
                 <p className="mt-3">
                   Shu emphasizes refinement through repetition and study.
@@ -117,7 +117,7 @@ export default function OurPhilosophy() {
               <div className="text-7xl text-gold-600 min-w-[96px]">超</div>
               <div>
                 <h3 className="text-sm uppercase font-semibold tracking-[0.3em] text-neutral-900">
-                  Cho — Transcendence
+                  Cho — Transcend
                 </h3>
                 <p className="mt-3">
                   Cho reflects the stage where training moves beyond form and

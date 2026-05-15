@@ -1,55 +1,52 @@
-"use client";
-
-import dynamic from "next/dynamic";
-
-const HeroScene = dynamic(() => import("@/components/home/HeroScene"), {
-  ssr: false,
-  loading: () => (
-    <div className="absolute inset-0 bg-gradient-to-b from-budokai-dark via-budokai-charcoal/40 to-budokai-dark" />
-  ),
-});
-
-function scrollToSection(id: string) {
-  const element = document.getElementById(id);
-  if (element) {
-    const headerOffset = 80;
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-  }
-}
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <div className="relative h-[calc(100svh-var(--header-height))] min-h-[calc(100svh-var(--header-height))] flex items-center justify-center bg-budokai-dark">
-      <HeroScene />
-      <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-budokai-dark/40 via-transparent to-budokai-dark/90" />
-
-      <div className="relative z-10 container mx-auto px-6 text-center text-white">
-        <div className="mx-auto flex max-w-4xl flex-col items-center gap-[clamp(0.75rem,2vh,1.5rem)]">
-          <div className="inline-block px-4 py-1.5 border border-gold-600/30 text-gold-600 text-[10px] tracking-[0.4em] uppercase font-bold rounded-full backdrop-blur-sm bg-black/40">
-            Endure • Refine • Transcend
+    <section className="bg-black">
+      <div className="container mx-auto px-6 text-white">
+        <div className="relative mx-auto max-w-6xl rounded-3xl bg-black/70 p-6 ">
+          <div className="absolute left-1/2 -translate-x-1/2 rounded-full border border-gold-500/35 bg-black/80 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.24em] text-gold-400 md:top-6 md:px-4 md:py-1.5 md:text-[11px]">
+            <span className="gold-gradient">Endure</span>
+            <span className="mx-2 text-gold-500/70">•</span>
+            <span className="gold-gradient">Train</span>
+            <span className="mx-2 text-gold-500/70">•</span>
+            <span className="gold-gradient">Transcend</span>
           </div>
-          <h1 className="font-sans text-[clamp(2rem,5vw,5rem)] md:text-[clamp(3rem,6vw,6rem)] xl:text-[clamp(3.5rem,7vw,7rem)] font-black leading-[0.95] tracking-tighter uppercase">
-            CANADA <br />
-            <span className="gold-gradient text-gold-600 drop-shadow-2xl block">
-              BUDOKAI ACADEMY
-            </span>
-          </h1>
-          <p className="max-w-2xl text-[clamp(0.95rem,2.2vw,1.1rem)] text-stone-400 font-light leading-relaxed">
-            Classical martial training integrating self-defense, history, and
-            philosophy. Cultivate physical strength, mental clarity, and
-            composure through traditional Budo practice.
-          </p>
 
-          <button
-            onClick={() => scrollToSection("about")}
-            className="px-10 py-3 md:px-12 md:py-4 bg-gold-600 hover:bg-white text-budokai-dark rounded-full transition-all font-bold tracking-widest text-xs shadow-2xl hover:scale-105 active:scale-95 uppercase"
-          >
-            Explore the Systems
-          </button>
+          <div className="grid grid-cols-1 pt-12 md:pt-14">
+            <div className="flex justify-center">
+              <Image
+                src="/dojo-logo.png"
+                alt="Canada Budokai Academy Logo"
+                width={1200}
+                height={1200}
+                className="h-40 w-auto object-contain brightness-110 drop-shadow-xl md:h-52 xl:h-64"
+                priority
+              />
+            </div>
+
+            <div className="rounded-2xl bg-black/30 p-5 text-center shadow-lg">
+              <h1 className="text-[clamp(1.5rem,3.5vw,2.8rem)] font-black uppercase leading-[1.05] tracking-tight">
+                Canada
+                <span className="gold-gradient block text-gold-500">
+                  Budokai Academy
+                </span>
+              </h1>
+
+              <div className="mt-3 text-[clamp(0.95rem,1.8vw,1.1rem)] font-light leading-relaxed text-stone-300">
+                <p>
+                  Classical martial training integrating self-defense, history,
+                  and philosophy.
+                </p>
+                <p className="mt-1">
+                  Cultivate physical strength, mental clarity, and composure
+                  through traditional Budo practice.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
