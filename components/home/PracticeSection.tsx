@@ -8,10 +8,8 @@ interface CurriculumItem {
 function CurriculumCard({ title, desc }: CurriculumItem) {
   return (
     <div className="group bg-white p-10 rounded-3xl shadow-lg border border-stone-200 flex flex-col h-full">
-      <h3 className="font-serif text-2xl text-budokai-dark mb-5">{title}</h3>
-      <p className="text-stone-500 text-sm leading-relaxed mb-8 italic">
-        {desc}
-      </p>
+      <h3 className="font-serif text-2xl mb-4">{title}</h3>
+      <p className="text-stone-500 text-sm leading-relaxed">{desc}</p>
     </div>
   );
 }
@@ -21,7 +19,7 @@ export default function PracticeSection() {
     <section id="practice" className="py-24 bg-[#F9F8F4] overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-24 max-w-4xl mx-auto">
-          <div className="inline-block mb-4 text-xs font-bold tracking-widest text-gold-600 uppercase">
+          <div className="inline-block mb-4 text-xs md:text-sm font-bold tracking-widest text-gold-600 uppercase">
             Our Practice
           </div>
 

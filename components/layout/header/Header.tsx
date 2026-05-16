@@ -15,6 +15,7 @@ interface NavLink {
 
 interface NavLinks {
   about: NavLink[];
+  schedule: NavLink;
 }
 
 const NAV_LINKS: NavLinks = {
@@ -40,6 +41,11 @@ const NAV_LINKS: NavLinks = {
       href: "/about/dnbk",
     },
   ],
+  schedule: {
+    label: "Schedule",
+    id: "schedule",
+    href: "/schedule",
+  },
 };
 
 const HEADER_OFFSET = 80;
@@ -99,12 +105,12 @@ export default function Header() {
               items={NAV_LINKS.about}
               onClick={scrollToSection}
             />
-            <button
-              onClick={() => scrollToSection("training")}
+            <Link
+              href="/locations"
               className="hover:text-gold-600 transition-colors uppercase cursor-pointer"
             >
-              Schedule
-            </button>
+              Locations
+            </Link>
             <Link
               href="/faq"
               className="hover:text-gold-600 transition-colors uppercase cursor-pointer"
@@ -158,7 +164,7 @@ export default function Header() {
           <div className="space-y-8">
             {/* About Section */}
             <div>
-              <h4 className="text-[10px] text-gold-600 font-bold uppercase tracking-[0.4em] mb-4">
+              <h4 className="text-sm text-gold-500 font-bold uppercase tracking-[0.1em] mb-4">
                 About
               </h4>
               <div className="flex flex-col gap-4 pl-4 border-l border-white/10">
@@ -187,12 +193,13 @@ export default function Header() {
 
             {/* Other Links */}
             <div className="space-y-4">
-              <button
-                onClick={() => scrollToSection("training")}
+              <Link
+                href="/locations"
+                onClick={() => setMenuOpen(false)}
                 className="block text-left text-white hover:text-gold-600 uppercase text-sm font-bold tracking-widest transition-colors"
               >
-                Schedule
-              </button>
+                Locations
+              </Link>
               <Link
                 href="/faq"
                 onClick={() => setMenuOpen(false)}

@@ -1,6 +1,5 @@
 "use client";
 
-import { Minus, Plus } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -56,20 +55,18 @@ function FAQItemComponent({ item }: FAQItemProps) {
     <div className="border-b border-stone-200 last:border-0">
       <button
         onClick={toggleOpen}
-        className="w-full py-6 flex justify-between items-center text-left hover:text-gold-600 transition-colors group"
+        className="w-full py-6 flex justify-between items-center text-left hover:text-gold-600 transition-colors group cursor-pointer"
         aria-expanded={isOpen}
       >
         <span className="font-serif text-lg md:text-xl font-medium">
           {item.question}
         </span>
-        {isOpen ? (
-          <Minus size={20} className="text-gold-600" />
-        ) : (
-          <Plus
-            size={20}
-            className="text-stone-400 group-hover:text-gold-600 transition-colors"
-          />
-        )}
+        <span
+          className="mt-1 text-gold-600 transition-transform group-open:rotate-45"
+          style={{ transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
+        >
+          +
+        </span>
       </button>
       <div
         className={`overflow-hidden transition-all duration-300 ${

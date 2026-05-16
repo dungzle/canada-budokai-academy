@@ -69,8 +69,8 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div className="text-center pt-8 border-t border-stone-900 text-[9px] uppercase font-bold tracking-[0.4em] text-stone-600">
-          &copy; {new Date().getFullYear()} CANADA BUDOKAI ACADEMY.
+        <div className="text-center pt-8 text-[9px] uppercase font-bold tracking-[0.4em] text-stone-600">
+          &copy; {new Date().getFullYear()} CANADA BUDOKAI ACADEMY
         </div>
       </div>
     </footer>

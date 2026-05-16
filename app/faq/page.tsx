@@ -55,28 +55,26 @@ export default function FAQ() {
       {/* HERO */}
       <section className="relative overflow-hidden bg-budokai-dark border-b border-gold-600/20">
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70" />
-        <div className="relative container mx-auto px-6 py-24 md:py-28">
-          <span className="inline-flex items-center mb-6 px-4 py-1.5 border border-gold-600/40 text-gold-600 text-[11px] tracking-[0.35em] uppercase font-medium rounded-full bg-black/40 backdrop-blur">
-            Training • Etiquette • Progress
-          </span>
+        <div className="relative container mx-auto px-6 py-16 md:py-20">
+          <div className="max-w-5xl mx-auto">
+            <h1 className="max-w-4xl text-3xl md:text-5xl lg:text-6xl font-semibold tracking-[0.03em] text-gold-500 font-serif">
+              Frequently Asked Questions
+            </h1>
 
-          <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl lg:text-7xl font-semibold tracking-[0.03em] text-gold-600 font-serif">
-            Frequently Asked Questions
-          </h1>
+            <div className="w-20 h-1 bg-gold-500 my-6" />
 
-          <div className="w-24 h-1 bg-gold-600 mt-6" />
-
-          <p className="mt-6 max-w-3xl text-stone-300 text-base md:text-lg leading-relaxed">
-            Clear answers to common questions about training, uniforms, grading,
-            and the traditions of Canada Budokai Academy.
-          </p>
+            <p className="max-w-3xl text-stone-300 text-sm md:text-base leading-relaxed">
+              Clear answers to common questions about training, uniforms,
+              grading, and the traditions of Canada Budokai Academy.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* CONTENT */}
       <section className="bg-[var(--surface-muted)]">
         <div className="container mx-auto px-6 py-16 md:py-20">
-          <div className="grid gap-10 lg:grid-cols-[1fr_0.6fr]">
+          <div className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-[1fr_0.6fr]">
             {/* FAQ LIST */}
             <div className="space-y-4">
               {faqs.map((item) => (
