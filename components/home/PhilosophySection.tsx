@@ -5,7 +5,7 @@ export default function PhilosophySection() {
     <section id="about" className="py-24 bg-white">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="text-center mb-12">
-          <div className="inline-block mb-4 text-xs font-bold tracking-widest text-gold-600 uppercase">
+          <div className="inline-block mb-4 text-xs md:text-sm font-bold tracking-widest text-gold-600 uppercase">
             Our Philosophy
           </div>
           <h2 className="font-serif text-4xl md:text-6xl mb-10 leading-tight text-budokai-dark italic">

@@ -28,7 +28,7 @@ export default function HeroSection() {
             <div className="rounded-2xl bg-black/30 p-5 text-center shadow-lg">
               <h1 className="text-[clamp(1.5rem,3.5vw,2.8rem)] font-black uppercase leading-[1.05] tracking-tight">
                 Canada
-                <span className="gold-gradient block text-gold-500">
+                <span className="gold-gradient block text-gold-500 pt-2">
                   Budokai Academy
                 </span>
               </h1>
