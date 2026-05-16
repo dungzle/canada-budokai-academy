@@ -4,13 +4,13 @@ export default function HeroSection() {
   return (
     <section className="bg-black">
       <div className="container mx-auto px-6 text-white">
-        <div className="relative mx-auto max-w-6xl rounded-3xl bg-black/70 p-6 ">
-          <div className="absolute left-1/2 -translate-x-1/2 rounded-full border border-gold-500/35 bg-black/80 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.24em] text-gold-400 md:top-6 md:px-4 md:py-1.5 md:text-[11px]">
-            <span className="gold-gradient">Endure</span>
-            <span className="mx-2 text-gold-500/70">•</span>
-            <span className="gold-gradient">Train</span>
-            <span className="mx-2 text-gold-500/70">•</span>
-            <span className="gold-gradient">Transcend</span>
+        <div className="relative mx-auto max-w-6xl rounded-3xl bg-black p-6 ">
+          <div className="text-gold-500 absolute left-1/2 -translate-x-1/2 rounded-full border border-gold-500/70 bg-black px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.24em] md:top-6 md:px-4 md:py-1.5 md:text-[11px]">
+            <span>Endure</span>
+            <span className="mx-2">•</span>
+            <span>Train</span>
+            <span className="mx-2">•</span>
+            <span>Transcend</span>
           </div>
 
           <div className="grid grid-cols-1 pt-12 md:pt-14">
@@ -33,12 +33,14 @@ export default function HeroSection() {
                 </span>
               </h1>
 
-              <div className="mt-3 text-[clamp(0.95rem,1.8vw,1.1rem)] font-light leading-relaxed text-stone-300">
+              <div className="w-24 h-px opacity-80 bg-gold-500 my-6 mx-auto" />
+
+              <div className="text-[clamp(0.95rem,1.8vw,1.1rem)] font-light leading-relaxed text-stone-300">
                 <p>
                   Classical martial training integrating self-defense, history,
                   and philosophy.
                 </p>
-                <p className="mt-1">
+                <p className="mt-2">
                   Cultivate physical strength, mental clarity, and composure
                   through traditional Budo practice.
                 </p>

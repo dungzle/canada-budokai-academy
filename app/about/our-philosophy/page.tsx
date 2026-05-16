@@ -11,22 +11,20 @@ export default function OurPhilosophy() {
     <main className="text-[var(--foreground)]">
       {/* HERO */}
       <section className="relative overflow-hidden bg-budokai-dark border-b border-gold-600/20">
-        <div className="container mx-auto px-6 py-24 md:py-28 relative">
-          <span className="inline-flex items-center border border-gold-600/50 text-gold-600 text-xs tracking-[0.4em] uppercase font-semibold rounded-full px-4 py-1.5 bg-black/40 backdrop-blur">
-            Budo as a Way of Life
-          </span>
+        <div className="container mx-auto px-6 py-16 md:py-20 relative">
+          <div className="max-w-5xl mx-auto">
+            <h1 className="max-w-4xl text-3xl md:text-5xl lg:text-6xl font-semibold tracking-[0.03em] text-gold-500 font-serif">
+              Our Philosophy
+            </h1>
 
-          <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl lg:text-7xl font-semibold tracking-[0.03em] text-gold-600 font-serif">
-            Our Philosophy
-          </h1>
+            <div className="w-20 h-1 bg-gold-500 my-6" />
 
-          <div className="w-24 h-1 bg-gold-600 mt-6" />
-
-          <p className="mt-6 max-w-3xl text-stone-300 text-base md:text-lg leading-relaxed">
-            Our philosophy is rooted in Budo, the martial way, where disciplined
-            practice develops character, awareness, and responsibility as a
-            lifelong path.
-          </p>
+            <p className="max-w-3xl text-stone-300 text-sm md:text-base leading-relaxed">
+              Our philosophy is rooted in Budo, the martial way, where
+              disciplined practice develops character, awareness, and
+              responsibility as a lifelong path.
+            </p>
+          </div>
         </div>
       </section>
 

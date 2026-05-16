@@ -15,7 +15,6 @@ interface NavLink {
 
 interface NavLinks {
   about: NavLink[];
-  program: NavLink[];
 }
 
 const NAV_LINKS: NavLinks = {
@@ -40,12 +39,6 @@ const NAV_LINKS: NavLinks = {
       id: "dnbk",
       href: "/about/dnbk",
     },
-  ],
-  program: [
-    { label: "Adult Beginner Class", id: "adult-beginner" },
-    { label: "Adult Advance Class", id: "adult-advance" },
-    { label: "Children Class", id: "children-class" },
-    { label: "Grading", id: "grading" },
   ],
 };
 
@@ -79,7 +72,7 @@ export default function Header() {
   return (
     <header className="font-sans font-bold text-xl">
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-40 h-[var(--header-height)] transition-all duration-500 bg-budokai-dark backdrop-blur-md shadow-2xl border-b border-gold-600/40">
+      <nav className="fixed top-0 left-0 right-0 z-40 h-[var(--header-height)] transition-all duration-500 bg-black backdrop-blur-md shadow-2xl border-b border-gold-600/40">
         <div className="container mx-auto px-6 h-full flex justify-between items-center">
           {/* Logo */}
           <Link
@@ -95,7 +88,7 @@ export default function Header() {
               className={`transition-all duration-500 h-10 md:h-14 w-auto object-contain shrink-0`}
             />
             <span className="font-sans font-bold text-sm md:text-xl tracking-tight transition-all duration-300 text-white wrap-break-word">
-              CANADA <span className="text-gold-600">BUDOKAI ACADEMY</span>
+              CANADA <span className="text-gold-500">BUDOKAI ACADEMY</span>
             </span>
           </Link>
 
@@ -104,11 +97,6 @@ export default function Header() {
             <DropdownLink
               title="About"
               items={NAV_LINKS.about}
-              onClick={scrollToSection}
-            />
-            <DropdownLink
-              title="Program"
-              items={NAV_LINKS.program}
               onClick={scrollToSection}
             />
             <button
@@ -194,24 +182,6 @@ export default function Header() {
                     </button>
                   ),
                 )}
-              </div>
-            </div>
-
-            {/* Program Section */}
-            <div>
-              <h4 className="text-[10px] text-gold-600 font-bold uppercase tracking-[0.4em] mb-4">
-                Program
-              </h4>
-              <div className="flex flex-col gap-4 pl-4 border-l border-white/10">
-                {NAV_LINKS.program.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="text-left text-white/70 hover:text-gold-600 uppercase text-xs tracking-widest transition-colors"
-                  >
-                    {item.label}
-                  </button>
-                ))}
               </div>
             </div>
 
