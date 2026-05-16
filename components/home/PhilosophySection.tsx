@@ -74,7 +74,7 @@ export default function PhilosophySection() {
         <div className="mt-20 text-center">
           <Link
             href="/about/our-philosophy"
-            className="inline-flex items-center justify-center px-10 py-4 bg-budokai-dark text-gold-600 rounded-full hover:bg-gold-600 hover:text-white transition-all font-bold tracking-widest text-sm uppercase border border-gold-600/30"
+            className="inline-flex items-center justify-center px-10 py-4 bg-budokai-dark text-gold-500 rounded-full hover:bg-gold-500 hover:text-white transition-all font-bold tracking-widest text-sm uppercase border border-gold-500/30"
           >
             Learn More
           </Link>

@@ -86,7 +86,7 @@ function FAQItemComponent({ item }: FAQItemProps) {
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="py-24 bg-[#F9F8F4]">
+    <section id="faq" className="py-24 bg-white">
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Header */}
         <div className="text-center mb-16">
@@ -106,7 +106,7 @@ export default function FAQSection() {
         <div className="text-center mt-12">
           <Link
             href="/faq"
-            className="inline-flex items-center justify-center px-10 py-4 bg-budokai-dark text-gold-600 rounded-full hover:bg-gold-600 hover:text-white transition-all font-bold tracking-widest text-sm uppercase border border-gold-600/30 shadow-xl shadow-budokai-dark/10"
+            className="inline-flex items-center justify-center px-10 py-4 bg-budokai-dark text-gold-500 rounded-full hover:bg-gold-500 hover:text-white transition-all font-bold tracking-widest text-sm uppercase border border-gold-500/30 shadow-xl shadow-budokai-dark/10"
           >
             Learn More
           </Link>

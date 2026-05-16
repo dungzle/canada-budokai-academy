@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="bg-budokai-dark text-stone-500 py-4 border-t border-gold-600/40">
       <div className="container mx-auto px-6">
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col items-center text-center gap-6 md:flex-row md:items-center md:justify-between md:text-left">
+          <div className="flex flex-col items-center text-center gap-6 lg:flex-row lg:items-center lg:justify-between lg:text-left">
             <div className="flex items-center gap-2 lg:gap-4 cursor-pointer transition-all duration-300">
               <Image
                 src="/dojo-logo.png"
@@ -15,14 +15,46 @@ export default function Footer() {
                 className="h-16 w-auto object-contain brightness-110"
               />
               <span className="font-sans font-bold text-xl text-white tracking-widest">
-                CANADA <span className="text-gold-600">BUDOKAI ACADEMY</span>
+                CANADA <span className="text-gold-500">BUDOKAI ACADEMY</span>
               </span>
             </div>
+            <div>
+              <p className="text-md font-bold tracking-[0.1em] text-gold-500">
+                LOCATIONS
+              </p>
+              <ul className="mt-3 w-full max-w-[36rem] divide-y divide-stone-700/50 text-left text-sm text-stone-200">
+                <li className="grid grid-cols-1 gap-y-0.5 py-1 leading-relaxed sm:grid-cols-[9.5rem_1fr] sm:gap-x-3 sm:gap-y-0">
+                  <span className="font-semibold text-stone-100 sm:pt-[1px]">
+                    CARSA Honbu dojo
+                  </span>
+                  <span className="text-stone-300">
+                    CARSA University of Victoria - 3800 Finnerty Rd, Victoria,
+                    BC
+                  </span>
+                </li>
+                <li className="grid grid-cols-1 gap-y-0.5 py-1 leading-relaxed sm:grid-cols-[9.5rem_1fr] sm:gap-x-3 sm:gap-y-0">
+                  <span className="font-semibold text-stone-100 sm:pt-[1px]">
+                    Vimy dojo
+                  </span>
+                  <span className="text-stone-300">
+                    Vimy Community Hall - 3968 Gibbins Rd, Duncan, BC
+                  </span>
+                </li>
+                <li className="grid grid-cols-1 gap-y-0.5 py-1 leading-relaxed sm:grid-cols-[9.5rem_1fr] sm:gap-x-3 sm:gap-y-0">
+                  <span className="font-semibold text-stone-100 sm:pt-[1px]">
+                    QMS dojo
+                  </span>
+                  <span className="text-stone-300">
+                    Queen Margaret's School - 660 Brownsey Ave, Duncan, BC
+                  </span>
+                </li>
+              </ul>
+            </div>
             <a
-              href="https://www.facebook.com/carsadojo"
+              href="https://www.facebook.com/CanadaBudokaiAcademy"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:bg-[#166fe5] hover:scale-110 transition-all duration-300 shadow-lg"
+              className="w-10 h-10 shrink-0 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:bg-[#166fe5] hover:scale-110 transition-all duration-300 shadow-lg"
               aria-label="Follow us on Facebook"
             >
               <svg
@@ -36,10 +68,6 @@ export default function Footer() {
               </svg>
             </a>
           </div>
-          <p className="max-w-xl text-xs leading-relaxed text-stone-400 italic text-center md:text-left">
-            Preserving the lineage of Shorinji-ryu and the Aiki traditions
-            across Canada.
-          </p>
         </div>
         <div className="text-center pt-8 border-t border-stone-900 text-[9px] uppercase font-bold tracking-[0.4em] text-stone-600">
           &copy; {new Date().getFullYear()} CANADA BUDOKAI ACADEMY.
