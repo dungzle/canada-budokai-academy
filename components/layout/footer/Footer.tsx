@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-budokai-dark text-stone-500 py-4 border-t border-gold-600/40">
+    <footer className="bg-black text-stone-500 py-4 border-t border-gold-600/40">
       <div className="container mx-auto px-6">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center text-center gap-6 lg:flex-row lg:items-center lg:justify-between lg:text-left">
@@ -19,10 +19,10 @@ export default function Footer() {
               </span>
             </div>
             <div>
-              <p className="text-md font-bold tracking-[0.1em] text-gold-500">
+              <p className="mt-2 text-md font-bold tracking-[0.1em] text-gold-500">
                 LOCATIONS
               </p>
-              <ul className="mt-3 w-full max-w-[36rem] divide-y divide-stone-700/50 text-left text-sm text-stone-200">
+              <ul className="mt-2 w-full max-w-[36rem] divide-y divide-stone-700/50 text-left text-sm text-stone-200">
                 <li className="grid grid-cols-1 gap-y-0.5 py-1 leading-relaxed sm:grid-cols-[9.5rem_1fr] sm:gap-x-3 sm:gap-y-0">
                   <span className="font-semibold text-stone-100 sm:pt-[1px]">
                     CARSA Honbu dojo
@@ -45,7 +45,7 @@ export default function Footer() {
                     QMS dojo
                   </span>
                   <span className="text-stone-300">
-                    Queen Margaret's School - 660 Brownsey Ave, Duncan, BC
+                    Queen Margaret’s School - 660 Brownsey Ave, Duncan, BC
                   </span>
                 </li>
               </ul>

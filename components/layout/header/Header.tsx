@@ -15,7 +15,6 @@ interface NavLink {
 
 interface NavLinks {
   about: NavLink[];
-  schedule: NavLink;
 }
 
 const NAV_LINKS: NavLinks = {
@@ -41,14 +40,8 @@ const NAV_LINKS: NavLinks = {
       href: "/about/dnbk",
     },
   ],
-  schedule: {
-    label: "Schedule",
-    id: "schedule",
-    href: "/schedule",
-  },
 };
 
-const HEADER_OFFSET = 80;
 const SCROLL_THRESHOLD = 50;
 
 export default function Header() {
@@ -60,16 +53,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const scrollToSection = (id: string) => {
-    setMenuOpen(false);
-    const element = document.getElementById(id);
-    if (!element) return;
-
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - HEADER_OFFSET;
-    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-  };
 
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -100,11 +83,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8 text-xs font-bold tracking-[0.2em] transition-colors text-white">
-            <DropdownLink
-              title="About"
-              items={NAV_LINKS.about}
-              onClick={scrollToSection}
-            />
+            <DropdownLink title="About" items={NAV_LINKS.about} />
             <Link
               href="/locations"
               className="hover:text-gold-600 transition-colors uppercase cursor-pointer"
@@ -117,17 +96,17 @@ export default function Header() {
             >
               FAQ
             </Link>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="px-6 py-2.5 bg-gold-600 text-budokai-dark rounded-full hover:bg-white transition-all shadow-md cursor-pointer uppercase"
+            <Link
+              href="/contact"
+              className="px-6 py-2.5 bg-gold-500 text-budokai-dark rounded-full hover:bg-white transition-all shadow-md cursor-pointer uppercase"
             >
               Contact Us
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
-            className={`lg:hidden p-2 transition-colors text-white`}
+            className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full text-white transition-all duration-200 hover:scale-105 hover:bg-white/15 hover:text-gold-500 active:scale-95 active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500/70"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -138,7 +117,7 @@ export default function Header() {
 
       {/* Mobile Navigation Menu */}
       <div
-        className={`lg:hidden fixed inset-0 top-0 z-50 bg-budokai-dark transition-all duration-500 ${
+        className={`lg:hidden fixed inset-0 top-0 z-50 bg-black transition-all duration-500 ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -153,7 +132,7 @@ export default function Header() {
             />
             <button
               onClick={() => setMenuOpen(false)}
-              className="text-white"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white transition-all duration-200 hover:scale-105 hover:bg-white/15 hover:text-gold-500 active:scale-95 active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500/70"
               aria-label="Close menu"
             >
               <X size={32} />
@@ -179,13 +158,14 @@ export default function Header() {
                       {item.label}
                     </Link>
                   ) : (
-                    <button
+                    <Link
                       key={item.id}
-                      onClick={() => scrollToSection(item.id)}
+                      href={`/#${item.id}`}
+                      onClick={() => setMenuOpen(false)}
                       className="text-left text-white/70 hover:text-gold-600 uppercase text-xs tracking-widest transition-colors"
                     >
                       {item.label}
-                    </button>
+                    </Link>
                   ),
                 )}
               </div>
@@ -208,12 +188,13 @@ export default function Header() {
                 FAQ
               </Link>
             </div>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="w-full py-4 bg-gold-600 text-budokai-dark font-bold uppercase tracking-widest rounded-lg hover:bg-white transition-colors"
+            <Link
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="block w-full py-4 bg-gold-500 text-budokai-dark font-bold uppercase tracking-widest rounded-lg hover:bg-white transition-colors text-center"
             >
               Contact Us
-            </button>
+            </Link>
           </div>
         </div>
       </div>
