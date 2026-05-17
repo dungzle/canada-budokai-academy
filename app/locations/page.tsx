@@ -27,7 +27,7 @@ const dojos = [
     classes: [
       { day: "Monday", level: "All levels", time: "6:00pm-8:00pm" },
       { day: "Wednesday", level: "All levels", time: "6:00pm-8:00pm" },
-      { day: "Friday", level: "All levels", time: "6:00pm-8:00pm" },
+      { day: "Thursday", level: "All levels", time: "6:00pm-8:00pm" },
     ],
   },
   {
@@ -35,7 +35,9 @@ const dojos = [
     venue: "Queen Margaret's School",
     address: "660 Brownsey Ave, Duncan, BC",
     mapsUrl: "https://maps.app.goo.gl/R89Y9P64WRW4AZmg9",
-    classes: [{ day: "Wednesday", level: "All levels", time: "6:00pm-8:00pm" }],
+    classes: [
+      { day: "Wednesday", level: "Children & youth", time: "3:00pm-4:30pm" },
+    ],
   },
 ] as const;
 
