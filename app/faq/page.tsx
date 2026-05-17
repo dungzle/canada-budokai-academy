@@ -53,28 +53,23 @@ export default function FAQ() {
   return (
     <main className="text-[var(--foreground)]">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-budokai-dark border-b border-gold-600/20">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70" />
-        <div className="relative container mx-auto px-6 py-16 md:py-20">
-          <div className="max-w-5xl mx-auto">
-            <h1 className="max-w-4xl text-3xl md:text-5xl lg:text-6xl font-semibold tracking-[0.03em] text-gold-500 font-serif">
-              Frequently Asked Questions
-            </h1>
-
-            <div className="w-20 h-1 bg-gold-500 my-6" />
-
-            <p className="max-w-3xl text-stone-300 text-sm md:text-base leading-relaxed">
-              Clear answers to common questions about training, uniforms,
-              grading, and the traditions of Canada Budokai Academy.
-            </p>
-          </div>
+      <section className="relative overflow-hidden bg-black border-b border-gold-600/20 py-12 md:py-16">
+        <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
+          <h1 className="max-w-4xl text-3xl md:text-5xl lg:text-6xl font-semibold tracking-[0.03em] text-gold-500 font-serif">
+            Frequently Asked Questions
+          </h1>
+          <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
+          <p className="max-w-3xl text-stone-300 text-sm md:text-base leading-relaxed">
+            Clear answers to common questions about training, uniforms, grading,
+            and the traditions of Canada Budokai Academy.
+          </p>
         </div>
       </section>
 
       {/* CONTENT */}
-      <section className="bg-[var(--surface-muted)]">
-        <div className="container mx-auto px-6 py-16 md:py-20">
-          <div className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-[1fr_0.6fr]">
+      <section className="py-8 lg:py-16 bg-[var(--surface-muted)]">
+        <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
+          <div className="grid gap-10 lg:grid-cols-[1fr_0.6fr]">
             {/* FAQ LIST */}
             <div className="space-y-4">
               {faqs.map((item) => (
@@ -99,19 +94,19 @@ export default function FAQ() {
             {/* ASIDE */}
             <aside className="space-y-6">
               <div className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--background)] p-8 shadow-md">
-                <h2 className="text-xs font-medium uppercase tracking-[0.3em] text-gold-600">
+                <p className="text-sm font-bold uppercase tracking-[0.1em] text-gold-500">
                   Quick Notes
-                </h2>
+                </p>
                 <ul className="mt-6 space-y-4 text-sm text-neutral-600">
                   <li>Train barefoot and bring water.</li>
                   <li>Small classes for personal instruction.</li>
-                  <li>Gradings held twice per year.</li>
+                  <li>Grading held twice per year.</li>
                   <li>Weapons training after green belt.</li>
                 </ul>
               </div>
 
               <div className="rounded-xl border border-gold-600/30 bg-[var(--background)] p-6 shadow-sm">
-                <p className="text-xs uppercase tracking-[0.3em] text-gold-600">
+                <p className="text-sm font-bold uppercase tracking-[0.1em] text-gold-500">
                   Still have questions?
                 </p>
                 <p className="mt-3 text-sm text-neutral-600 leading-relaxed">

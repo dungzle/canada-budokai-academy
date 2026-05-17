@@ -5,7 +5,7 @@ import { useState } from "react";
 interface DropdownLinkProps {
   title: string;
   items: { label: string; id: string; href?: string }[];
-  onClick: (id: string) => void;
+  onClick?: (id: string) => void;
 }
 
 export default function DropdownLink({
@@ -46,7 +46,7 @@ export default function DropdownLink({
               <button
                 key={item.id}
                 onClick={() => {
-                  onClick(item.id);
+                  onClick?.(item.id);
                   setIsOpen(false);
                 }}
                 className="w-full text-left px-6 py-2.5 text-[10px] font-bold tracking-[0.2em] text-stone-300 hover:text-gold-600 hover:bg-white/5 transition-all uppercase"

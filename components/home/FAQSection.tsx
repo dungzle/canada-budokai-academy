@@ -24,7 +24,7 @@ const FAQ_DATA: FAQItem[] = [
     id: "age",
     question: "What is the minimum age for children?",
     answer:
-      "We generally accept children starting from age 6. Our youth division focuses on coordination, discipline, and respect in a safe, fun environment.",
+      "We generally accept children starting from age 7. Our children classes focus on coordination, discipline, and respect in a safe, fun environment.",
   },
   {
     id: "clothing",

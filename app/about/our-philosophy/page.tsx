@@ -10,27 +10,25 @@ export default function OurPhilosophy() {
   return (
     <main className="text-[var(--foreground)]">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-budokai-dark border-b border-gold-600/20">
-        <div className="container mx-auto px-6 py-16 md:py-20 relative">
-          <div className="max-w-5xl mx-auto">
-            <h1 className="max-w-4xl text-3xl md:text-5xl lg:text-6xl font-semibold tracking-[0.03em] text-gold-500 font-serif">
-              Our Philosophy
-            </h1>
+      <section className="relative overflow-hidden bg-black border-b border-gold-600/20 py-8 lg:py-16 ">
+        <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-[0.03em] text-gold-500 font-serif">
+            Our Philosophy
+          </h1>
 
-            <div className="w-20 h-1 bg-gold-500 my-6" />
+          <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
 
-            <p className="max-w-3xl text-stone-300 text-sm md:text-base leading-relaxed">
-              Our philosophy is rooted in Budo, the martial way, where
-              disciplined practice develops character, awareness, and
-              responsibility as a lifelong path.
-            </p>
-          </div>
+          <p className="max-w-4xl text-stone-300 text-sm md:text-base leading-relaxed">
+            Our philosophy is rooted in Budo, the martial way, where disciplined
+            practice develops character, awareness, and responsibility as a
+            lifelong path.
+          </p>
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-[var(--surface-muted)]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto space-y-14 leading-relaxed text-neutral-600">
+      <section className="py-8 lg:py-16 bg-[var(--surface-muted)]">
+        <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
+          <div className="space-y-14 leading-relaxed text-neutral-600">
             {/* BUDO */}
             <div>
               <h2 className="text-xl md:text-2xl font-serif font-semibold text-neutral-900">

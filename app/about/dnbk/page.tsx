@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 export default function DNBK() {
   return (
     <main className="text-[var(--foreground)]">
-      <section className="relative overflow-hidden bg-budokai-dark border-b border-gold-600/20">
+      <section className="relative overflow-hidden bg-black border-b border-gold-600/20">
         <div className="container mx-auto px-6 py-16 md:py-20 relative">
           <div className="max-w-5xl mx-auto">
             <h1 className="max-w-4xl text-3xl md:text-5xl lg:text-6xl font-serif font-semibold tracking-[0.03em] text-gold-500">
               Dai Nippon Butoku Kai
             </h1>
-            <div className="w-20 h-1 bg-gold-500 my-6" />
+            <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
             <p className="max-w-3xl text-stone-300 text-sm md:text-base leading-relaxed">
               An established Japanese martial arts authority dedicated to
               preserving the virtues and traditions of classical Budo.
@@ -25,7 +25,7 @@ export default function DNBK() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-[var(--background)] border-t border-[var(--border-subtle)]">
+      <section className="py-8 lg:py-16 bg-[var(--background)] border-t border-[var(--border-subtle)]">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
@@ -80,7 +80,7 @@ export default function DNBK() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-[var(--surface-muted)]">
+      <section className="py-8 lg:py-16 bg-[var(--surface-muted)]">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <div className="space-y-6 text-neutral-600 leading-relaxed">

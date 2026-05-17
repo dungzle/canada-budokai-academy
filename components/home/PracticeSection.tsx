@@ -44,7 +44,7 @@ export default function PracticeSection() {
           />
           <CurriculumCard
             title="Meibukan Goju-ryu Karate-do"
-            desc="A traditional Okinawan karate style founded by Sensei Meitoku Yagi, a direct student of Goju-Ryu creator Chojun Miyagi. It blends hard external techniques with soft internal methods to create a close-range, highly efficient system of self-defense."
+            desc="A traditional Okinawan karate style founded by Sensei Meitoku Yagi, a direct student of Goju-Ryu creator Sensei Chojun Miyagi. It blends hard external techniques with soft internal methods to create a close-range, highly efficient system of self-defense."
           />
           <CurriculumCard
             title="Kobujutsu"
