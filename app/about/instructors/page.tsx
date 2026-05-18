@@ -35,10 +35,8 @@ export default function Instructors() {
               </h2>
               <p className="text-neutral-600 text-sm leading-relaxed">
                 Sensei Aaron Usatch is the Head Instructor of the Canada Budokai
-                Academy at the University of Victoria and an Assistant
-                Instructor at the Shaolin-Tzu Martial Arts Academy. He began his
-                martial arts training in 1994 and has remained a dedicated
-                student and practitioner ever since.
+                Academy. He began his martial arts training in 1994 and has
+                remained a dedicated student and practitioner ever since.
               </p>
               <p className="text-neutral-600 text-sm leading-relaxed">
                 Known as a committed teacher and lifelong learner, Sensei Usatch
