@@ -34,8 +34,8 @@ export default function Instructors() {
                 Sensei Aaron Usatch
               </h2>
               <p className="text-neutral-600 text-sm leading-relaxed">
-                Sensei Aaron Usatch is the Head Instructor of the CARSA Shorinji
-                Ryu Academy at the University of Victoria and an Assistant
+                Sensei Aaron Usatch is the Head Instructor of the Canada Budokai
+                Academy at the University of Victoria and an Assistant
                 Instructor at the Shaolin-Tzu Martial Arts Academy. He began his
                 martial arts training in 1994 and has remained a dedicated
                 student and practitioner ever since.

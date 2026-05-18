@@ -71,7 +71,7 @@ export default function OurPhilosophy() {
                 At Canada Budokai Academy, this development is guided through
                 the classical framework of <em>Nin</em>, <em>Shu</em>, and{" "}
                 <em>Cho</em>, a progression that leads the student from
-                endurance, through disciplined refinement, and ultimately toward
+                endurance, through disciplined training, and ultimately toward
                 transcendence.
               </p>
             </div>
@@ -100,10 +100,12 @@ export default function OurPhilosophy() {
                   Shu — Train
                 </h3>
                 <p className="mt-3">
-                  Shu emphasizes refinement through repetition and study.
-                  Technique, posture, and mindset are continually polished—not
-                  as an end goal, but as an ongoing process of correction,
-                  learning, and growth.
+                  Shu represents the disciplined refinement of the self through
+                  rigorous training. Each repetition, correction, and return to
+                  the fundamentals sharpens the body, focuses the mind, and
+                  polishes the character. Through training, the practitioner
+                  learns that mastery is not a destination, but a lifelong path
+                  of improvement.
                 </p>
               </div>
             </div>
