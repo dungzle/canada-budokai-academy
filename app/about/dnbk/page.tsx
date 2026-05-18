@@ -107,7 +107,7 @@ export default function DNBK() {
                 the spirit of classical Budo and supports practitioners in
                 carrying these traditions forward with sincerity and purpose.
               </p>
-              <div className="pt-2">
+              <div className="mt-8 mb-2 text-center">
                 <a
                   href="https://dnbk.org/"
                   target="_blank"
