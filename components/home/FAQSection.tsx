@@ -21,10 +21,10 @@ const FAQ_DATA: FAQItem[] = [
       "No, our classes are designed for all skill levels. We have dedicated programs for absolute beginners where we focus on fundamental movements and basic etiquette.",
   },
   {
-    id: "age",
-    question: "What is the minimum age for children?",
+    id: "class-size",
+    question: "How large are the classes?",
     answer:
-      "We generally accept children starting from age 7. Our children classes focus on coordination, discipline, and respect in a safe, fun environment.",
+      "Class size is kept small (typically less than 15 students) to provide more personal attention. Students are often divided into smaller groups with assistant instructors.",
   },
   {
     id: "clothing",
@@ -33,16 +33,16 @@ const FAQ_DATA: FAQItem[] = [
       "For your trial class, comfortable athletic clothing (like a t-shirt and track pants) is perfect",
   },
   {
-    id: "frequency",
-    question: "How often should I train?",
-    answer:
-      "Consistency is key. We recommend attending at least two classes per week to see steady progress in your physical and mental development.",
-  },
-  {
     id: "grading",
     question: "Are there grading and exams?",
     answer:
       "Yes, we follow a traditional kyu/dan ranking system. Grading takes place periodically and is based on a combination of technical proficiency, spirit, and attendance.",
+  },
+  {
+    id: "age",
+    question: "What is the minimum age for children?",
+    answer:
+      "We generally accept children starting from age 7. Our children classes focus on coordination, discipline, and respect in a safe, fun environment.",
   },
 ];
 

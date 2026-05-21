@@ -34,9 +34,10 @@ export default function Instructors() {
                 Sensei Aaron Usatch
               </h2>
               <p className="text-neutral-600 text-sm leading-relaxed">
-                Sensei Aaron Usatch is the Founder and Head Instructor of the Canada Budokai
-                Academy. He began his martial arts training in 1994 and has
-                remained a dedicated student and practitioner ever since.
+                Sensei Aaron Usatch is the Founder and Head Instructor of the
+                Canada Budokai Academy. He began his martial arts training in
+                1994 and has remained a dedicated student and practitioner ever
+                since.
               </p>
               <p className="text-neutral-600 text-sm leading-relaxed">
                 Known as a committed teacher and lifelong learner, Sensei Usatch
@@ -105,7 +106,7 @@ export default function Instructors() {
         </div>
       </section>
 
-      <section className="py-8 lg:py-16 bg-[var(--surface-muted)]">
+      <section className="pt-8 pb-12 lg:py-16 bg-[var(--surface-muted)]">
         <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-9 space-y-4">

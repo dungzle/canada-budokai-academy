@@ -38,9 +38,9 @@ export default function OurPractice() {
       </section>
 
       {/* CONTENT */}
-      <section className="py-8 lg:py-16 bg-[var(--surface-muted)]">
+      <section className="pt-8 pb-12  lg:py-16 bg-[var(--surface-muted)]">
         <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
-          <div className="grid gap-16 lg:grid-cols-[2fr_0.5fr]">
+          <div className="grid gap-16 lg:grid-cols-[2fr_0.75fr]">
             {/* MAIN COLUMN */}
             <div className="space-y-12 leading-relaxed text-neutral-600">
               <div>
