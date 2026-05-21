@@ -34,7 +34,7 @@ export default function Instructors() {
                 Sensei Aaron Usatch
               </h2>
               <p className="text-neutral-600 text-sm leading-relaxed">
-                Sensei Aaron Usatch is the Head Instructor of the Canada Budokai
+                Sensei Aaron Usatch is the Founder and Head Instructor of the Canada Budokai
                 Academy. He began his martial arts training in 1994 and has
                 remained a dedicated student and practitioner ever since.
               </p>
@@ -66,7 +66,7 @@ export default function Instructors() {
 
             <div className="flex lg:col-span-3 lg:justify-end">
               <Image
-                src="/sensei-photo.jpg"
+                src="/sensei-photo.png"
                 alt="Sensei Aaron Usatch"
                 width={1200}
                 height={1200}
@@ -113,7 +113,23 @@ export default function Instructors() {
                 Senpai Lucas Boas
               </h2>
               <p className="text-neutral-600 text-sm leading-relaxed">
-                Senpai Lucas Boas is the Assistant Instructor of the Vimy dojo.
+                Senpai Lucas Boas is the Assistant Instructor for the Vimy Dojo.
+                He began his martial arts journey at a young age, growing up
+                with his father serving as a Judo Sensei, which instilled in him
+                an early appreciation for discipline, respect, and traditional
+                martial arts training.
+              </p>
+              <p className="text-neutral-600 text-sm leading-relaxed">
+                Senpai Boas began training in Shorinji-ryu Karate-do in the
+                1990s and has remained dedicated to the discipline, structure,
+                and lifelong study of preserving traditional Karate. He is
+                deeply passionate about classical martial arts training and
+                values the philosophy, technical precision, and personal
+                development that accompany authentic traditional practice.
+                Through his continued training and instruction, he strives to
+                uphold the spirit and standards of traditional Budo while
+                supporting the growth and development of students within the
+                dojo.
               </p>
               <p className="text-neutral-600 text-sm leading-relaxed">
                 He currently holds the an international rank of Shodan (1st
@@ -122,7 +138,14 @@ export default function Instructors() {
             </div>
 
             <div className="flex lg:col-span-3 lg:justify-end">
-              Photo to be added
+              <Image
+                src="/senpai-luke.jpeg"
+                alt="Senpai Lucas Boas"
+                width={1200}
+                height={1200}
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 40vw, 60vw"
+                className="w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[280px] h-auto rounded-2xl object-cover shadow-lg ring-1 ring-black/5"
+              />
             </div>
           </div>
         </div>
