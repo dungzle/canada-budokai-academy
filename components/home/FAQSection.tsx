@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+
+import ActionButton from "@/components/ui/ActionButton";
 
 interface FAQItem {
   id: string;
@@ -37,12 +38,6 @@ const FAQ_DATA: FAQItem[] = [
     question: "Are there grading and exams?",
     answer:
       "Yes, we follow a traditional kyu/dan ranking system. Grading takes place periodically and is based on a combination of technical proficiency, spirit, and attendance.",
-  },
-  {
-    id: "age",
-    question: "What is the minimum age for children?",
-    answer:
-      "We generally accept children starting from age 7. Our children classes focus on coordination, discipline, and respect in a safe, fun environment.",
   },
 ];
 
@@ -101,12 +96,9 @@ export default function FAQSection() {
 
         {/* CTA Button */}
         <div className="text-center mt-12">
-          <Link
-            href="/faq"
-            className="inline-flex items-center justify-center px-10 py-4 bg-budokai-dark text-gold-500 rounded-full hover:bg-gold-500 hover:text-white transition-all font-bold tracking-widest text-sm uppercase border border-gold-500/30 shadow-xl shadow-budokai-dark/10"
-          >
-            Learn More
-          </Link>
+          <ActionButton href="/faq" variant="dark">
+            View All FAQs
+          </ActionButton>
         </div>
       </div>
     </section>

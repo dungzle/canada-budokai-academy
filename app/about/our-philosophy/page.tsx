@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 
+import ActionButton from "@/components/ui/ActionButton";
+
 export const metadata: Metadata = {
   title: "Our Philosophy | Canada Budokai Academy",
   description:
@@ -124,6 +126,12 @@ export default function OurPhilosophy() {
                   with clarity, restraint, and purpose in all situations.
                 </p>
               </div>
+            </div>
+
+            <div className="mb-8 lg:mb-0 flex justify-center">
+              <ActionButton href="/about/our-practice" variant="dark">
+                Explore Our Practice
+              </ActionButton>
             </div>
           </div>
         </div>

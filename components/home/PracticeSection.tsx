@@ -1,4 +1,4 @@
-import Link from "next/link";
+import ActionButton from "@/components/ui/ActionButton";
 
 interface CurriculumItem {
   title: string;
@@ -18,7 +18,7 @@ export default function PracticeSection() {
   return (
     <section id="practice" className="py-24 bg-[#F9F8F4] overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-24 max-w-4xl mx-auto">
+        <div className="text-center mb-16 max-w-4xl mx-auto">
           <div className="inline-block mb-4 text-xs md:text-sm font-bold tracking-widest text-gold-600 uppercase">
             Our Practice
           </div>
@@ -30,21 +30,19 @@ export default function PracticeSection() {
           <p className="text-lg text-stone-600 leading-relaxed max-w-4xl mx-auto">
             Our practice is the structured study of classical martial arts
             integrated into a single system. Striking, grappling, weapons, and
-            internal disciplines are studied together to develop adaptable skill
-            and practical understanding across different ranges and contexts.
+            internal disciplines are studied together to develop adaptable
+            skills and practical understanding.
           </p>
-
-          <div className="w-24 h-1 bg-gold-600 mx-auto mt-10"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
           <CurriculumCard
             title="Shorinji-ryu Karate-do"
-            desc="Founded by Sensei Richard Kim, Shorinji-ryu Karate-do is the core discipline of our practice, emphasizing correct structure, timing, distancing, and judgment through classical Budo principles."
+            desc="Founded by O’Sensei Richard Kim, Shorinji-ryu Karate-do is the core discipline of our practice, emphasizing correct structure, timing, distancing, and judgment through classical Budo principles."
           />
           <CurriculumCard
             title="Meibukan Goju-ryu Karate-do"
-            desc="A traditional Okinawan karate style founded by Sensei Meitoku Yagi, a direct student of Goju-ryu creator Sensei Chojun Miyagi. It blends hard external techniques with soft internal methods to create a close-range, highly efficient system of self-defense."
+            desc="A traditional Okinawan Karate style founded by O’Sensei Meitoku Yagi, a direct student of Goju-ryu creator O’Sensei Chojun Miyagi. It blends hard external techniques with soft internal methods to create a close-range, highly efficient system of self-defense."
           />
           <CurriculumCard
             title="Kobujutsu"
@@ -65,12 +63,9 @@ export default function PracticeSection() {
         </div>
 
         <div className="text-center">
-          <Link
-            href="/about/our-practice"
-            className="inline-flex items-center justify-center px-10 py-4 bg-budokai-dark text-gold-500 rounded-full hover:bg-gold-500 hover:text-white transition-all font-bold tracking-widest text-sm uppercase border border-gold-500/30 shadow-xl shadow-budokai-dark/10"
-          >
-            Learn More
-          </Link>
+          <ActionButton href="/about/our-practice" variant="dark">
+            Learn More About Our Practice
+          </ActionButton>
         </div>
       </div>
     </section>

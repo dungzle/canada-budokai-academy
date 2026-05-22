@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import Link from "next/link";
+
+import ActionButton from "@/components/ui/ActionButton";
 
 export const metadata: Metadata = {
   title: "Locations | Canada Budokai Academy",
@@ -99,7 +100,7 @@ export default function Locations() {
             Locations
           </h1>
           <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
-          <p className="max-w-3xl text-stone-300 text-sm md:text-base leading-relaxed">
+          <p className="max-w-5xl text-stone-300 text-sm md:text-base leading-relaxed">
             Our locations are designed to provide a safe and welcoming
             environment for students of all levels, focusing on the principles
             of classical Budo and practical application. Whether you are a
@@ -174,14 +175,18 @@ export default function Locations() {
               </article>
             ))}
           </div>
-
-          <div className="text-center mt-12 mb-4 lg:mb-0">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-10 py-4 bg-budokai-dark text-gold-500 rounded-full hover:bg-gold-500 hover:text-white transition-all font-bold tracking-wide text-sm lg:text-base border border-gold-500/30 shadow-xl shadow-budokai-dark/10"
-            >
-              Book a Free Trial Class
-            </Link>
+        </div>
+      </section>
+      <section className="py-10 lg:py-14 bg-[var(--background)] border-t border-[var(--border-subtle)]">
+        <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4 text-center">
+          <p className="text-sm md:text-base text-neutral-600 leading-relaxed max-w-5xl mx-auto">
+            Ready to begin? Schedule your free trial class and take the first
+            step in your training.
+          </p>
+          <div className="mt-6 flex justify-center">
+            <ActionButton href="/contact">
+              Schedule a Free Trial Class
+            </ActionButton>
           </div>
         </div>
       </section>

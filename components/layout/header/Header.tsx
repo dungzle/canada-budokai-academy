@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import DropdownLink from "@/components/layout/header/DropdownLink";
+import ActionButton from "@/components/ui/ActionButton";
 
 interface NavLink {
   label: string;
@@ -96,12 +97,9 @@ export default function Header() {
             >
               FAQ
             </Link>
-            <Link
-              href="/contact"
-              className="px-6 py-2.5 bg-gold-500 text-budokai-dark rounded-full hover:bg-white transition-all shadow-md cursor-pointer uppercase"
-            >
-              Contact Us
-            </Link>
+            <ActionButton href="/contact" className="tracking-widest">
+              CONTACT US
+            </ActionButton>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -188,13 +186,13 @@ export default function Header() {
                 FAQ
               </Link>
             </div>
-            <Link
+            <ActionButton
               href="/contact"
               onClick={() => setMenuOpen(false)}
-              className="block w-full py-4 bg-gold-500 text-budokai-dark font-bold uppercase tracking-widest rounded-lg hover:bg-white transition-colors text-center"
+              className="w-full rounded-lg tracking-widest"
             >
-              Contact Us
-            </Link>
+              CONTACT US
+            </ActionButton>
           </div>
         </div>
       </div>

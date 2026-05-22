@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 
+import ActionButton from "@/components/ui/ActionButton";
+
 export const metadata: Metadata = {
   title: "FAQ | Canada Budokai Academy",
   description:
@@ -59,7 +61,7 @@ export default function FAQ() {
             Frequently Asked Questions
           </h1>
           <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
-          <p className="max-w-3xl text-stone-300 text-sm md:text-base leading-relaxed">
+          <p className="max-w-5xl text-stone-300 text-sm md:text-base leading-relaxed">
             Clear answers to common questions about training, uniforms, grading,
             and the traditions of Canada Budokai Academy.
           </p>
@@ -115,6 +117,19 @@ export default function FAQ() {
                 </p>
               </div>
             </aside>
+          </div>
+        </div>
+      </section>
+      <section className="py-10 lg:py-14 bg-[var(--background)] border-t border-[var(--border-subtle)]">
+        <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4 text-center">
+          <p className="text-sm md:text-base text-neutral-600 leading-relaxed max-w-5xl mx-auto">
+            Ready to begin? Schedule your free trial class and take the first
+            step in your training.
+          </p>
+          <div className="mt-6 flex justify-center">
+            <ActionButton href="/contact" variant="gold">
+              Schedule a Free Trial Class
+            </ActionButton>
           </div>
         </div>
       </section>
