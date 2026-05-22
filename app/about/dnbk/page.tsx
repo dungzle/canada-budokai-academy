@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Image from "next/image";
 
+import ActionButton from "@/components/ui/ActionButton";
+
 export const metadata: Metadata = {
   title: "The Dai Nippon Butoku-kai",
   description:
@@ -16,7 +18,7 @@ export default function DNBK() {
             Dai Nippon Butoku Kai
           </h1>
           <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
-          <p className="max-w-3xl text-stone-300 text-sm md:text-base leading-relaxed">
+          <p className="max-w-5xl text-stone-300 text-sm md:text-base leading-relaxed">
             An established Japanese martial arts authority dedicated to
             preserving the virtues and traditions of classical Budo.
           </p>
@@ -103,14 +105,15 @@ export default function DNBK() {
               carrying these traditions forward with sincerity and purpose.
             </p>
             <div className="mt-8 mb-2 text-center">
-              <a
+              <ActionButton
                 href="https://dnbk.org/"
+                variant="dark"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-gold-500/30 bg-budokai-dark px-10 py-4 text-sm font-bold uppercase tracking-widest text-gold-500 shadow-xl shadow-budokai-dark/10 transition-all hover:bg-gold-500 hover:text-white"
+                className="px-10 py-4 font-bold tracking-widest"
               >
                 Learn More
-              </a>
+              </ActionButton>
             </div>
           </div>
         </div>

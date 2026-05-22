@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Image from "next/image";
 
+import ActionButton from "@/components/ui/ActionButton";
+
 export const metadata: Metadata = {
   title: "Instructors | Canada Budokai Academy",
   description:
@@ -17,7 +19,7 @@ export default function Instructors() {
             Instructors
           </h1>
           <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
-          <p className="max-w-3xl text-stone-300 text-sm md:text-base leading-relaxed">
+          <p className="max-w-5xl text-stone-300 text-sm md:text-base leading-relaxed">
             Our instructors are dedicated teachers and lifelong students,
             committed to preserving classical Budo through disciplined training,
             study, and personal example.
@@ -148,6 +150,20 @@ export default function Instructors() {
                 className="w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[280px] h-auto rounded-2xl object-cover shadow-lg ring-1 ring-black/5"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10 lg:py-14 bg-[var(--background)] border-t border-[var(--border-subtle)]">
+        <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4 text-center">
+          <p className="text-sm md:text-base text-neutral-600 leading-relaxed max-w-5xl mx-auto">
+            Ready to train with us? Check our dojo locations and class schedule
+            to find the best option for you.
+          </p>
+          <div className="mt-6 flex justify-center">
+            <ActionButton href="/locations" variant="dark">
+              View Locations & Schedule
+            </ActionButton>
           </div>
         </div>
       </section>

@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 
+import ActionButton from "@/components/ui/ActionButton";
+
 export const metadata: Metadata = {
   title: "Our Practice | Canada Budokai Academy",
   description:
@@ -19,7 +21,7 @@ export default function OurPractice() {
           <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
 
           {/* Clear, student-focused introduction */}
-          <p className="max-w-3xl text-stone-300 text-sm md:text-base leading-relaxed">
+          <p className="max-w-5xl text-stone-300 text-sm md:text-base leading-relaxed">
             We teach a complete, classical martial arts system rooted in
             traditional Budo. Training goes beyond learning techniques or a
             single style. Students study how martial arts function as practical
@@ -27,7 +29,7 @@ export default function OurPractice() {
             development.
           </p>
 
-          <p className="mt-3 max-w-3xl text-stone-300 text-sm md:text-base leading-relaxed">
+          <p className="mt-3 max-w-5xl text-stone-300 text-sm md:text-base leading-relaxed">
             Drawing from Chinese, Okinawan, and Japanese traditions, our
             curriculum integrates striking, grappling, weapons, internal
             practices, and philosophy into one coherent system. The goal is not
@@ -104,6 +106,12 @@ export default function OurPractice() {
                 </ul>
               </div>
             </aside>
+          </div>
+
+          <div className="mt-12 flex justify-center">
+            <ActionButton href="/about/instructors" variant="dark">
+              Explore Our Instructors
+            </ActionButton>
           </div>
         </div>
       </section>
