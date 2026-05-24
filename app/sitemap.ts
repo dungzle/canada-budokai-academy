@@ -2,8 +2,6 @@ import type { MetadataRoute } from "next";
 
 import { getSiteUrl } from "@/lib/site-url";
 
-const siteUrl = getSiteUrl({ requireInProduction: true });
-
 const routes = [
   "",
   "/about/our-philosophy",
@@ -33,6 +31,12 @@ const routeSeoHints: Record<
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const siteUrl = getSiteUrl();
+
+  if (!siteUrl) {
+    return [];
+  }
+
   return routes.map((route) => ({
     ...routeSeoHints[route],
     url: `${siteUrl}${route}`,
