@@ -2,16 +2,33 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 import ActionButton from "@/components/ui/ActionButton";
+import { SHARED_OPEN_GRAPH, SHARED_TWITTER } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Instructors | Canada Budokai Academy",
+  title: "Karate Instructors in Victoria & Duncan, BC",
   description:
-    "Meet our instructors—dedicated teachers rooted in classical Budo and lifelong study.",
+    "Meet the experienced Karate instructors leading classes in Victoria and Duncan, BC, with training rooted in classical Budo and lifelong study.",
+  alternates: {
+    canonical: "/about/instructors",
+  },
+  openGraph: {
+    ...SHARED_OPEN_GRAPH,
+    title: "Karate Instructors in Victoria & Duncan, BC",
+    description:
+      "Meet the experienced Karate instructors leading classes in Victoria and Duncan, BC, with training rooted in classical Budo and lifelong study.",
+    url: "/about/instructors",
+  },
+  twitter: {
+    ...SHARED_TWITTER,
+    title: "Karate Instructors in Victoria & Duncan, BC",
+    description:
+      "Meet the experienced Karate instructors leading classes in Victoria and Duncan, BC, with training rooted in classical Budo and lifelong study.",
+  },
 };
 
 export default function Instructors() {
   return (
-    <main className="text-[var(--foreground)]">
+    <div className="text-[var(--foreground)]">
       {/* HERO */}
       <section className="relative overflow-hidden bg-black border-b border-gold-600/20 py-12 md:py-16">
         <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
@@ -69,7 +86,7 @@ export default function Instructors() {
 
             <div className="flex lg:col-span-3 lg:justify-end">
               <Image
-                src="/sensei-photo.png"
+                src="/sensei-photo-2.png"
                 alt="Sensei Aaron Usatch"
                 width={1200}
                 height={1200}
@@ -96,14 +113,20 @@ export default function Instructors() {
                 remained a dedicated student and practitioner ever since.
               </p>
               <p className="text-neutral-600 text-sm leading-relaxed">
-                He currently holds the an international rank of Nidan (2nd
-                degree black belt) in Shorinji-ryu Karate-do.
+                Through years of consistent training, discipline, and commitment
+                to traditional martial arts values, Senpai Viet has become an
+                important part of the dojo’s instruction and leadership team. He
+                is recognized for his technical skill, calm leadership,
+                humility, and dedication to supporting students in their
+                training.
+              </p>
+              <p className="text-neutral-600 text-sm leading-relaxed">
+                He currently holds the international rank of Nidan (2nd degree
+                black belt) in Shorinji-ryu Karate-do.
               </p>
             </div>
 
-            <div className="flex lg:col-span-3 lg:justify-end">
-              Photo to be added
-            </div>
+            <div className="flex lg:col-span-3 lg:justify-end"></div>
           </div>
         </div>
       </section>
@@ -135,8 +158,8 @@ export default function Instructors() {
                 dojo.
               </p>
               <p className="text-neutral-600 text-sm leading-relaxed">
-                He currently holds the an international rank of Shodan (1st
-                degree black belt) in Shorinji-ryu Karate-do.
+                He currently holds the rank of Shodan (1st degree black belt) in
+                Shorinji-ryu Karate-do.
               </p>
             </div>
 
@@ -167,6 +190,6 @@ export default function Instructors() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

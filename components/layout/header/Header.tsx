@@ -122,12 +122,20 @@ export default function Header() {
         <div className="flex flex-col p-10 h-full overflow-y-auto">
           {/* Mobile Menu Header */}
           <div className="flex items-center justify-between mb-12">
-            <Image
-              src="/dojo-logo.png"
-              alt="Canada Budokai Academy Logo"
-              width={66}
-              height={66}
-            />
+            <Link
+              href="/"
+              onClick={() => {
+                handleLogoClick();
+                setMenuOpen(false);
+              }}
+            >
+              <Image
+                src="/dojo-logo.png"
+                alt="Canada Budokai Academy Logo"
+                width={66}
+                height={66}
+              />
+            </Link>
             <button
               onClick={() => setMenuOpen(false)}
               className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white transition-all duration-200 hover:scale-105 hover:bg-white/15 hover:text-gold-500 active:scale-95 active:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500/70"

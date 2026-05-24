@@ -1,16 +1,33 @@
 import { Metadata } from "next";
 
 import ActionButton from "@/components/ui/ActionButton";
+import { SHARED_OPEN_GRAPH, SHARED_TWITTER } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Our Philosophy | Canada Budokai Academy",
+  title: "Budo Philosophy Behind Our Karate Training",
   description:
-    "Our philosophy is rooted in traditional Budo, emphasizing ethical practice, whole-person development, and lifelong discipline.",
+    "Learn the Budo philosophy that guides our traditional Karate training in Victoria and Duncan, BC, with a focus on discipline, ethics, and lifelong development.",
+  alternates: {
+    canonical: "/about/our-philosophy",
+  },
+  openGraph: {
+    ...SHARED_OPEN_GRAPH,
+    title: "Budo Philosophy Behind Our Karate Training",
+    description:
+      "Learn the Budo philosophy that guides our traditional Karate training in Victoria and Duncan, BC, with a focus on discipline, ethics, and lifelong development.",
+    url: "/about/our-philosophy",
+  },
+  twitter: {
+    ...SHARED_TWITTER,
+    title: "Budo Philosophy Behind Our Karate Training",
+    description:
+      "Learn the Budo philosophy that guides our traditional Karate training in Victoria and Duncan, BC, with a focus on discipline, ethics, and lifelong development.",
+  },
 };
 
 export default function OurPhilosophy() {
   return (
-    <main className="text-[var(--foreground)]">
+    <div className="text-[var(--foreground)]">
       {/* HERO */}
       <section className="relative overflow-hidden bg-black border-b border-gold-600/20 py-8 lg:py-16 ">
         <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
@@ -136,6 +153,6 @@ export default function OurPhilosophy() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
