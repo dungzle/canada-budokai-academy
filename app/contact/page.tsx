@@ -52,7 +52,7 @@ export default function Contact() {
   };
 
   return (
-    <main className="text-[var(--foreground)]">
+    <div className="text-[var(--foreground)] mb-2">
       {/* HERO */}
       <section className="relative overflow-hidden bg-black border-b border-gold-600/20 py-12 md:py-16">
         <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
@@ -187,6 +187,6 @@ export default function Contact() {
           </form>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

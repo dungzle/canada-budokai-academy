@@ -2,16 +2,33 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 import ActionButton from "@/components/ui/ActionButton";
+import { SHARED_OPEN_GRAPH, SHARED_TWITTER } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "The Dai Nippon Butoku-kai",
+  title: "The Dai Nippon Butoku Kai",
   description:
-    "History, mission, and philosophy of the Dai Nippon Butoku Kai (DNBK).",
+    "Explore the history and philosophy of the Dai Nippon Butoku Kai and how its traditional Budo values guide our Karate instruction.",
+  alternates: {
+    canonical: "/about/dnbk",
+  },
+  openGraph: {
+    ...SHARED_OPEN_GRAPH,
+    title: "The Dai Nippon Butoku Kai",
+    description:
+      "Explore the history and philosophy of the Dai Nippon Butoku Kai and how its traditional Budo values guide our Karate instruction.",
+    url: "/about/dnbk",
+  },
+  twitter: {
+    ...SHARED_TWITTER,
+    title: "The Dai Nippon Butoku Kai",
+    description:
+      "Explore the history and philosophy of the Dai Nippon Butoku Kai and how its traditional Budo values guide our Karate instruction.",
+  },
 };
 
 export default function DNBK() {
   return (
-    <main className="text-[var(--foreground)]">
+    <div className="text-[var(--foreground)]">
       <section className="relative overflow-hidden bg-black border-b border-gold-600/20 py-12 md:py-16">
         <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
           <h1 className="max-w-4xl text-3xl md:text-5xl lg:text-6xl font-serif font-semibold tracking-[0.03em] text-gold-500">
@@ -118,6 +135,6 @@ export default function DNBK() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

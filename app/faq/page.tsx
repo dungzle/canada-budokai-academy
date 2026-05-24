@@ -1,11 +1,28 @@
 import { Metadata } from "next";
 
 import ActionButton from "@/components/ui/ActionButton";
+import { SHARED_OPEN_GRAPH, SHARED_TWITTER } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "FAQ | Canada Budokai Academy",
+  title: "FAQs",
   description:
-    "Frequently asked questions about training, grading, uniforms, and traditions at Canada Budokai Academy.",
+    "Answers to common questions about karate classes, uniforms, gradings, and free trial training in Victoria and Duncan, BC.",
+  alternates: {
+    canonical: "/faq",
+  },
+  openGraph: {
+    ...SHARED_OPEN_GRAPH,
+    title: "FAQs",
+    description:
+      "Answers to common questions about karate classes, uniforms, gradings, and free trial training in Victoria and Duncan, BC.",
+    url: "/faq",
+  },
+  twitter: {
+    ...SHARED_TWITTER,
+    title: "FAQs",
+    description:
+      "Answers to common questions about karate classes, uniforms, gradings, and free trial training in Victoria and Duncan, BC.",
+  },
 };
 
 const faqs = [
@@ -52,8 +69,25 @@ const faqs = [
 ];
 
 export default function FAQ() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
-    <main className="text-[var(--foreground)]">
+    <div className="text-[var(--foreground)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* HERO */}
       <section className="relative overflow-hidden bg-black border-b border-gold-600/20 py-12 md:py-16">
         <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
@@ -133,6 +167,6 @@ export default function FAQ() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

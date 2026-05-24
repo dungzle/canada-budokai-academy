@@ -2,16 +2,33 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 import ActionButton from "@/components/ui/ActionButton";
+import { SHARED_OPEN_GRAPH, SHARED_TWITTER } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Instructors | Canada Budokai Academy",
+  title: "Karate Instructors in Victoria & Duncan, BC",
   description:
-    "Meet our instructors—dedicated teachers rooted in classical Budo and lifelong study.",
+    "Meet the experienced Karate instructors leading classes in Victoria and Duncan, BC, with training rooted in classical Budo and lifelong study.",
+  alternates: {
+    canonical: "/about/instructors",
+  },
+  openGraph: {
+    ...SHARED_OPEN_GRAPH,
+    title: "Karate Instructors in Victoria & Duncan, BC",
+    description:
+      "Meet the experienced Karate instructors leading classes in Victoria and Duncan, BC, with training rooted in classical Budo and lifelong study.",
+    url: "/about/instructors",
+  },
+  twitter: {
+    ...SHARED_TWITTER,
+    title: "Karate Instructors in Victoria & Duncan, BC",
+    description:
+      "Meet the experienced Karate instructors leading classes in Victoria and Duncan, BC, with training rooted in classical Budo and lifelong study.",
+  },
 };
 
 export default function Instructors() {
   return (
-    <main className="text-[var(--foreground)]">
+    <div className="text-[var(--foreground)]">
       {/* HERO */}
       <section className="relative overflow-hidden bg-black border-b border-gold-600/20 py-12 md:py-16">
         <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
@@ -167,6 +184,6 @@ export default function Instructors() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

@@ -25,10 +25,15 @@ export default function HeroSection() {
             </span>
           </h1>
 
-          <p className="my-8 text-sm lg:text-base text-stone-300">
-            Dedicated to the preservation of classical martial arts in modern
-            society.
-          </p>
+          <div className="my-8 text-base lg:text-lg text-stone-300">
+            <p className="mb-2">
+              Dedicated to the preservation of classical martial arts in modern
+              society.
+            </p>
+            <p>
+              Traditional Karate and Budo training in Victoria and Duncan, BC.
+            </p>
+          </div>
 
           <ActionButton href="/contact" className="px-6 py-3">
             Schedule a Free Trial Class
