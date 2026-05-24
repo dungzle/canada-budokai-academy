@@ -1,4 +1,5 @@
 const LOCAL_DEV_URL = "http://localhost:3000";
+let hasWarnedMissingSiteUrl = false;
 
 interface SiteUrlOptions {
   requireInProduction?: boolean;
@@ -11,6 +12,13 @@ export function getSiteUrl(options: SiteUrlOptions = {}): string | undefined {
 
   if (envUrl) {
     return envUrl;
+  }
+
+  if (!hasWarnedMissingSiteUrl) {
+    hasWarnedMissingSiteUrl = true;
+    console.warn(
+      "NEXT_PUBLIC_SITE_URL is missing. Set it for correct canonical, robots, sitemap, and schema URLs.",
+    );
   }
 
   if (process.env.NODE_ENV !== "production") {
