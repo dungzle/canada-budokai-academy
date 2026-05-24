@@ -31,7 +31,8 @@ export default function HeroSection() {
               society.
             </p>
             <p>
-              Traditional Karate and Budo training in Victoria and Duncan, BC.
+              Traditional Karate and classical martial arts training in Victoria
+              and Duncan, BC.
             </p>
           </div>
 
