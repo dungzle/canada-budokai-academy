@@ -12,7 +12,8 @@ const siteUrl = getSiteUrl();
 const facebookUrl = "https://www.facebook.com/CanadaBudokaiAcademy";
 
 export const metadata: Metadata = {
-  title: "Karate & Martial Arts Classes in Victoria and Duncan, BC",
+  title:
+    "Canada Budokai Academy | Karate & Martial Arts Classes in Victoria and Duncan, BC",
   description:
     "Canada Budokai Academy offers traditional Karate and classical martial arts training at our dojos in Victoria and Duncan, BC, welcoming youth and adult students of all experience levels.",
   keywords: [
@@ -27,14 +28,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    title: "Karate & Martial Arts Classes in Victoria and Duncan, BC",
+    title:
+      "Canada Budokai Academy | Karate & Martial Arts Classes in Victoria and Duncan, BC",
     description:
       "Canada Budokai Academy offers traditional Karate and classical martial arts training at our dojos in Victoria and Duncan, BC, welcoming youth and adult students of all experience levels.",
     url: "/",
   },
   twitter: {
     ...SHARED_TWITTER,
-    title: "Karate & Martial Arts Classes in Victoria and Duncan, BC",
+    title:
+      "Canada Budokai Academy | Karate & Martial Arts Classes in Victoria and Duncan, BC",
     description:
       "Canada Budokai Academy offers traditional Karate and classical martial arts training at our dojos in Victoria and Duncan, BC, welcoming youth and adult students of all experience levels.",
   },

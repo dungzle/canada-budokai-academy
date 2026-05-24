@@ -11,7 +11,7 @@ export default function LocationsCTASection() {
         <div className="my-8 text-sm md:text-base text-neutral-700 leading-relaxed max-w-3xl mx-auto">
           <p className="mb-2">
             At Canada Budokai Academy, traditional Karate and classical martial
-            arts training are rooted in Budo - a lifelong path of discipline,
+            arts training are rooted in Budo, a lifelong path of discipline,
             resilience, self-discovery, and character development.
           </p>
 

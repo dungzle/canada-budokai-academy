@@ -240,9 +240,7 @@ export default function Locations() {
           </h1>
           <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
           <p className="max-w-5xl text-stone-300 text-sm md:text-base leading-relaxed">
-            Our dojo locations in Victoria and Duncan, BC welcome youth and
-            adult students of all experience levels, with training rooted in
-            classical Budo, traditional Karate, and practical application.
+            Our Victoria and Duncan, BC dojos welcome youth and adult students of all experience levels, from beginners to experienced practitioners, with training rooted in traditional Karate, classical martial arts, and the principles of Budo.
           </p>
         </div>
       </section>
