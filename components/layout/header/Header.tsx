@@ -71,7 +71,7 @@ export default function Header() {
             className="flex items-center gap-2 lg:gap-4 cursor-pointer transition-all duration-300"
           >
             <Image
-              src="/dojo-logo.png"
+              src="/dojo-logo.webp"
               alt="Canada Budokai Academy Logo"
               width={100}
               height={100}
@@ -130,7 +130,7 @@ export default function Header() {
               }}
             >
               <Image
-                src="/dojo-logo.png"
+                src="/dojo-logo.webp"
                 alt="Canada Budokai Academy Logo"
                 width={66}
                 height={66}

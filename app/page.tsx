@@ -63,8 +63,8 @@ export default function Home() {
         areaServed: ["Victoria, BC", "Duncan, BC", "Vancouver Island, BC"],
         sport: ["Karate", "Martial Arts"],
         url: siteUrl,
-        image: siteUrl ? `${siteUrl}/dojo-logo.png` : "/dojo-logo.png",
-        logo: siteUrl ? `${siteUrl}/dojo-logo.png` : "/dojo-logo.png",
+        image: siteUrl ? `${siteUrl}/dojo-logo.webp` : "/dojo-logo.webp",
+        logo: siteUrl ? `${siteUrl}/dojo-logo.webp` : "/dojo-logo.webp",
         sameAs: [facebookUrl],
         contactPoint: [
           {

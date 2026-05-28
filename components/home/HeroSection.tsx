@@ -8,7 +8,7 @@ export default function HeroSection() {
       <div className="container relative mx-auto px-6 text-white max-w-6xl rounded-3xl p-6">
         <div className="flex justify-center">
           <Image
-            src="/dojo-logo.png"
+            src="/dojo-logo.webp"
             alt="Canada Budokai Academy Logo"
             width={1200}
             height={1200}
