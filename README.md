@@ -20,6 +20,30 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Contact Form Email (Resend)
+
+This project sends contact form submissions using [Resend](https://resend.com).
+
+1. Create a Resend account and API key.
+2. Verify a sending domain or use Resend test sender for local testing.
+3. Add these variables to `.env.local`:
+
+```bash
+RESEND_API_KEY=re_xxxxxxxxx
+CONTACT_TO_EMAIL=your-email@example.com
+CONTACT_FROM_EMAIL=Canada Budokai <no-reply@yourdomain.com>
+TURNSTILE_SECRET_KEY=your-turnstile-secret-key
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=your-turnstile-site-key
+```
+
+Notes:
+
+- `CONTACT_TO_EMAIL` is where you receive contact form submissions.
+- `CONTACT_FROM_EMAIL` must be an address allowed by your Resend setup.
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY` is the Cloudflare Turnstile site key used in the contact form.
+- `TURNSTILE_SECRET_KEY` is the server-side secret used to verify Turnstile tokens.
+- The contact API also applies a rate limit of 5 requests per 10 minutes per IP.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

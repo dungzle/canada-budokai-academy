@@ -86,7 +86,7 @@ export default function Instructors() {
 
             <div className="flex lg:col-span-3 lg:justify-end">
               <Image
-                src="/sensei-photo-2.png"
+                src="/sensei-photo.jpeg"
                 alt="Sensei Aaron Usatch"
                 width={1200}
                 height={1200}

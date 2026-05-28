@@ -72,9 +72,7 @@ const dojos = [
     address: "660 Brownsey Ave, Duncan, BC",
     city: "Duncan",
     mapsUrl: "https://maps.app.goo.gl/R89Y9P64WRW4AZmg9",
-    classes: [
-      { day: "Wednesday", level: "Children & youth", time: "3:00pm-4:30pm" },
-    ],
+    classes: [],
   },
 ] as const;
 
@@ -240,7 +238,10 @@ export default function Locations() {
           </h1>
           <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
           <p className="max-w-5xl text-stone-300 text-sm md:text-base leading-relaxed">
-            Our Victoria and Duncan, BC dojos welcome youth and adult students of all experience levels, from beginners to experienced practitioners, with training rooted in traditional Karate, classical martial arts, and the principles of Budo.
+            Our Victoria and Duncan, BC dojos welcome youth and adult students
+            of all experience levels, from beginners to experienced
+            practitioners, with training rooted in traditional Karate, classical
+            martial arts, and the principles of Budo.
           </p>
         </div>
       </section>
@@ -288,24 +289,31 @@ export default function Locations() {
                     </span>
                     Weekly schedule
                   </div>
-                  <ul className="space-y-2 text-sm text-neutral-700">
-                    {dojo.classes.map((item) => (
-                      <li
-                        key={`${dojo.name}-${item.day}`}
-                        className="flex items-start justify-between gap-3"
-                      >
-                        <span className="font-medium text-neutral-900">
-                          {item.day}
-                        </span>
-                        <span className="text-right">
-                          <span className="block text-xs uppercase tracking-wide text-neutral-500">
-                            {item.level}
+                  {dojo.classes.length > 0 ? (
+                    <ul className="space-y-2 text-sm text-neutral-700">
+                      {dojo.classes.map((item) => (
+                        <li
+                          key={`${dojo.name}-${item.day}`}
+                          className="flex items-start justify-between gap-3"
+                        >
+                          <span className="font-medium text-neutral-900">
+                            {item.day}
                           </span>
-                          <span>{item.time}</span>
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                          <span className="text-right">
+                            <span className="block text-xs uppercase tracking-wide text-neutral-500">
+                              {item.level}
+                            </span>
+                            <span>{item.time}</span>
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-sm text-neutral-700">
+                      Please contact us for current class details and
+                      availability.
+                    </p>
+                  )}
                 </div>
               </article>
             ))}

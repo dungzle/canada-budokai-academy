@@ -1,23 +1,51 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import Script from "next/script";
+import { SubmitEvent, useEffect, useState } from "react";
+
+declare global {
+  interface Window {
+    onTurnstileVerified?: (token: string) => void;
+    onTurnstileExpired?: () => void;
+    turnstile?: {
+      reset: (widgetId?: string) => void;
+    };
+  }
+}
 
 export default function Contact() {
   const MESSAGE_MAX_LENGTH = 2000;
+  const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [subjectError, setSubjectError] = useState("");
+  const [submitError, setSubmitError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    window.onTurnstileVerified = (token: string) => {
+      setCaptchaToken(token);
+      setSubmitError("");
+    };
+
+    window.onTurnstileExpired = () => {
+      setCaptchaToken("");
+    };
+
+    return () => {
+      delete window.onTurnstileVerified;
+      delete window.onTurnstileExpired;
+    };
+  }, []);
 
   const isValidEmail = (value: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!isValidEmail(email)) {
@@ -25,34 +53,63 @@ export default function Contact() {
       return;
     }
 
-    if (!subject) {
-      setSubjectError("Please choose what you are interested in.");
+    if (!TURNSTILE_SITE_KEY) {
+      setSubmitError("Captcha is not configured yet.");
+      return;
+    }
+
+    if (!captchaToken) {
+      setSubmitError("Please complete the captcha.");
       return;
     }
 
     setEmailError("");
-    setSubjectError("");
+    setSubmitError("");
     setIsSubmitting(true);
 
-    // TODO: Add email functionality here
-    console.log({ name, email, subject, body });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, body, captchaToken }),
+      });
 
-    // Simulate submission delay
-    setTimeout(() => {
+      if (!response.ok) {
+        const data = (await response.json().catch(() => null)) as {
+          message?: string;
+        } | null;
+        setSubmitError(
+          data?.message ?? "Could not send your message right now.",
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
       setIsSubmitting(false);
       setSubmitted(true);
       setName("");
       setEmail("");
-      setSubject("");
       setBody("");
+      setCaptchaToken("");
+      window.turnstile?.reset();
 
       // Reset success message after 4 seconds
       setTimeout(() => setSubmitted(false), 4000);
-    }, 500);
+    } catch {
+      setSubmitError("Network error. Please try again.");
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="text-[var(--foreground)] mb-2">
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        strategy="afterInteractive"
+      />
+
       {/* HERO */}
       <section className="relative overflow-hidden bg-black border-b border-gold-600/20 py-12 md:py-16">
         <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
@@ -167,10 +224,34 @@ export default function Contact() {
               </p>
             </div>
 
+            <div>
+              {TURNSTILE_SITE_KEY ? (
+                <div
+                  className="cf-turnstile"
+                  data-sitekey={TURNSTILE_SITE_KEY}
+                  data-callback="onTurnstileVerified"
+                  data-expired-callback="onTurnstileExpired"
+                />
+              ) : (
+                <p className="text-sm text-amber-700">
+                  Captcha is not configured yet.
+                </p>
+              )}
+            </div>
+
             {/* Success Message */}
             {submitted && (
               <div className="p-4 rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm font-medium">
                 Thank you for reaching out! We will get back to you soon.
+              </div>
+            )}
+
+            {submitError && (
+              <div
+                className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm font-medium"
+                role="alert"
+              >
+                {submitError}
               </div>
             )}
 
