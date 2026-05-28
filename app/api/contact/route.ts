@@ -1,23 +1,52 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+import {
+  CONTACT_EMAIL_MAX_LENGTH,
+  CONTACT_MESSAGE_MAX_LENGTH,
+  CONTACT_MESSAGE_MIN_LENGTH,
+  CONTACT_NAME_MAX_LENGTH,
+  CONTACT_NAME_MIN_LENGTH,
+} from "@/lib/contact-constants";
+
 export const runtime = "edge";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const MESSAGE_MAX_LENGTH = 2000;
+const NAME_REGEX = /^[\p{L}\p{M}\s.'-]+$/u;
 const RATE_LIMIT_MAX_REQUESTS = 5;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 
 const requestLog = new Map<string, number[]>();
 
 type ContactPayload = {
-  name?: string;
-  email?: string;
-  body?: string;
-  captchaToken?: string;
+  name?: unknown;
+  email?: unknown;
+  body?: unknown;
+  captchaToken?: unknown;
 };
 
-const sanitize = (value: string) => value.replace(/[\r\n]+/g, " ").trim();
+const SINGLE_LINE_CONTROL_CHARS = /[\u0000-\u001F\u007F]+/g;
+const MESSAGE_CONTROL_CHARS = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g;
+
+const toStringOrEmpty = (value: unknown) =>
+  typeof value === "string" ? value : "";
+
+const sanitizeSingleLine = (value: unknown) =>
+  toStringOrEmpty(value)
+    .normalize("NFKC")
+    .replace(SINGLE_LINE_CONTROL_CHARS, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const sanitizeMessage = (value: unknown) =>
+  toStringOrEmpty(value)
+    .normalize("NFKC")
+    .replace(/\r\n?/g, "\n")
+    .replace(MESSAGE_CONTROL_CHARS, "")
+    .trim();
+
+const hasHeaderInjectionChars = (value: unknown) =>
+  /[\r\n]/.test(toStringOrEmpty(value));
 
 const getClientIp = (request: Request) => {
   const forwardedFor = request.headers.get("x-forwarded-for");
@@ -101,29 +130,47 @@ export async function POST(request: Request) {
 
     const payload = (await request.json()) as ContactPayload;
 
-    const name = sanitize(payload.name ?? "");
-    const email = sanitize(payload.email ?? "");
-    const body = (payload.body ?? "").trim();
-    const captchaToken = (payload.captchaToken ?? "").trim();
+    if (
+      hasHeaderInjectionChars(payload.name) ||
+      hasHeaderInjectionChars(payload.email)
+    ) {
+      return NextResponse.json(
+        { message: "Invalid characters detected in form fields." },
+        { status: 400 },
+      );
+    }
 
-    if (!name || name.length < 2 || name.length > 80) {
+    const name = sanitizeSingleLine(payload.name);
+    const email = sanitizeSingleLine(payload.email);
+    const body = sanitizeMessage(payload.body);
+    const captchaToken = sanitizeSingleLine(payload.captchaToken);
+
+    if (
+      !name ||
+      name.length < CONTACT_NAME_MIN_LENGTH ||
+      name.length > CONTACT_NAME_MAX_LENGTH ||
+      !NAME_REGEX.test(name)
+    ) {
       return NextResponse.json(
         { message: "Please provide a valid full name." },
         { status: 400 },
       );
     }
 
-    if (!EMAIL_REGEX.test(email)) {
+    if (!EMAIL_REGEX.test(email) || email.length > CONTACT_EMAIL_MAX_LENGTH) {
       return NextResponse.json(
         { message: "Please provide a valid email address." },
         { status: 400 },
       );
     }
 
-    if (body.length < 10 || body.length > MESSAGE_MAX_LENGTH) {
+    if (
+      body.length < CONTACT_MESSAGE_MIN_LENGTH ||
+      body.length > CONTACT_MESSAGE_MAX_LENGTH
+    ) {
       return NextResponse.json(
         {
-          message: `Message must be between 10 and ${MESSAGE_MAX_LENGTH} characters.`,
+          message: `Message must be between ${CONTACT_MESSAGE_MIN_LENGTH} and ${CONTACT_MESSAGE_MAX_LENGTH} characters.`,
         },
         { status: 400 },
       );

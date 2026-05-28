@@ -1,20 +1,35 @@
 "use client";
 
 import Script from "next/script";
-import { SubmitEvent, useEffect, useState } from "react";
+import { SubmitEvent, useEffect, useRef, useState } from "react";
+
+import {
+  CONTACT_EMAIL_MAX_LENGTH,
+  CONTACT_MESSAGE_MAX_LENGTH,
+  CONTACT_MESSAGE_MIN_LENGTH,
+  CONTACT_NAME_MAX_LENGTH,
+  CONTACT_NAME_MIN_LENGTH,
+} from "@/lib/contact-constants";
 
 declare global {
   interface Window {
-    onTurnstileVerified?: (token: string) => void;
-    onTurnstileExpired?: () => void;
     turnstile?: {
+      render: (
+        container: HTMLElement,
+        options: {
+          sitekey: string;
+          callback?: (token: string) => void;
+          "expired-callback"?: () => void;
+          "error-callback"?: () => void;
+        },
+      ) => string;
+      remove: (widgetId: string) => void;
       reset: (widgetId?: string) => void;
     };
   }
 }
 
 export default function Contact() {
-  const MESSAGE_MAX_LENGTH = 2000;
   const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,22 +39,83 @@ export default function Contact() {
   const [submitError, setSubmitError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isTurnstileReady, setIsTurnstileReady] = useState(false);
+  const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
+  const turnstileWidgetIdRef = useRef<string | null>(null);
+  const didRetryTurnstileRenderRef = useRef(false);
+  const turnstileRetryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
 
   useEffect(() => {
-    window.onTurnstileVerified = (token: string) => {
-      setCaptchaToken(token);
-      setSubmitError("");
+    const removeTurnstileWidget = () => {
+      if (turnstileWidgetIdRef.current && window.turnstile) {
+        window.turnstile.remove(turnstileWidgetIdRef.current);
+        turnstileWidgetIdRef.current = null;
+      }
+
+      if (turnstileContainerRef.current) {
+        turnstileContainerRef.current.innerHTML = "";
+      }
     };
 
-    window.onTurnstileExpired = () => {
-      setCaptchaToken("");
+    const clearTurnstileRetry = () => {
+      if (turnstileRetryTimeoutRef.current) {
+        clearTimeout(turnstileRetryTimeoutRef.current);
+        turnstileRetryTimeoutRef.current = null;
+      }
     };
+
+    const renderTurnstile = () => {
+      if (!TURNSTILE_SITE_KEY || !isTurnstileReady) {
+        return;
+      }
+
+      const container = turnstileContainerRef.current;
+      if (!container) {
+        return;
+      }
+
+      if (!window.turnstile) {
+        if (!didRetryTurnstileRenderRef.current) {
+          didRetryTurnstileRenderRef.current = true;
+          turnstileRetryTimeoutRef.current = setTimeout(() => {
+            turnstileRetryTimeoutRef.current = null;
+            renderTurnstile();
+          }, 500);
+        }
+        return;
+      }
+
+      removeTurnstileWidget();
+
+      turnstileWidgetIdRef.current = window.turnstile.render(container, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token: string) => {
+          setCaptchaToken(token);
+          setSubmitError("");
+        },
+        "expired-callback": () => {
+          setCaptchaToken("");
+        },
+        "error-callback": () => {
+          setCaptchaToken("");
+          setSubmitError(
+            "Captcha failed to load. Please refresh and try again.",
+          );
+        },
+      });
+    };
+
+    clearTurnstileRetry();
+    didRetryTurnstileRenderRef.current = false;
+    renderTurnstile();
 
     return () => {
-      delete window.onTurnstileVerified;
-      delete window.onTurnstileExpired;
+      clearTurnstileRetry();
+      removeTurnstileWidget();
     };
-  }, []);
+  }, [TURNSTILE_SITE_KEY, isTurnstileReady]);
 
   const isValidEmail = (value: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -93,7 +169,7 @@ export default function Contact() {
       setEmail("");
       setBody("");
       setCaptchaToken("");
-      window.turnstile?.reset();
+      window.turnstile?.reset(turnstileWidgetIdRef.current ?? undefined);
 
       // Reset success message after 4 seconds
       setTimeout(() => setSubmitted(false), 4000);
@@ -108,6 +184,7 @@ export default function Contact() {
       <Script
         src="https://challenges.cloudflare.com/turnstile/v0/api.js"
         strategy="afterInteractive"
+        onReady={() => setIsTurnstileReady(true)}
       />
 
       {/* HERO */}
@@ -145,8 +222,8 @@ export default function Contact() {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Your full name"
                 autoComplete="name"
-                minLength={2}
-                maxLength={80}
+                minLength={CONTACT_NAME_MIN_LENGTH}
+                maxLength={CONTACT_NAME_MAX_LENGTH}
                 required
                 className="w-full px-4 py-3 rounded-lg border border-[var(--border-subtle)] bg-white text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all"
               />
@@ -180,6 +257,7 @@ export default function Contact() {
                 }}
                 placeholder="you@example.com"
                 autoComplete="email"
+                maxLength={CONTACT_EMAIL_MAX_LENGTH}
                 required
                 aria-invalid={Boolean(emailError)}
                 aria-describedby={emailError ? "email-error" : undefined}
@@ -212,26 +290,21 @@ export default function Contact() {
                 placeholder="How can we help? If you’d like to try a class, please include your preferred location or class time."
                 required
                 rows={6}
-                minLength={10}
-                maxLength={MESSAGE_MAX_LENGTH}
+                minLength={CONTACT_MESSAGE_MIN_LENGTH}
+                maxLength={CONTACT_MESSAGE_MAX_LENGTH}
                 className="w-full px-4 py-3 rounded-lg border border-[var(--border-subtle)] bg-white text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all resize-none"
               />
               <p
                 className="text-sm text-neutral-500 text-right"
                 aria-live="polite"
               >
-                {body.length}/{MESSAGE_MAX_LENGTH} characters
+                {body.length}/{CONTACT_MESSAGE_MAX_LENGTH} characters
               </p>
             </div>
 
             <div>
               {TURNSTILE_SITE_KEY ? (
-                <div
-                  className="cf-turnstile"
-                  data-sitekey={TURNSTILE_SITE_KEY}
-                  data-callback="onTurnstileVerified"
-                  data-expired-callback="onTurnstileExpired"
-                />
+                <div ref={turnstileContainerRef} className="min-h-[65px]" />
               ) : (
                 <p className="text-sm text-amber-700">
                   Captcha is not configured yet.
@@ -260,7 +333,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-10 py-4 bg-budokai-dark text-gold-500 rounded-full hover:bg-gold-500 hover:text-white transition-all font-bold tracking-wide text-base border border-gold-500/30 shadow-xl shadow-budokai-dark/10 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                className="inline-flex min-h-11 items-center justify-center rounded-full px-7 py-3 text-sm font-semibold tracking-wide leading-none whitespace-nowrap transition-colors transition-shadow duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] active:scale-95 border border-gold-500/35 bg-budokai-dark text-gold-500 hover:bg-budokai-dark/90 hover:border-gold-500/55 hover:text-gold-400 shadow-md shadow-budokai-dark/15 focus-visible:ring-gold-500/60 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
