@@ -184,7 +184,7 @@ export default function Locations() {
         description:
           "Traditional Karate and classical martial arts training in Victoria and Duncan, BC.",
         url: siteUrl,
-        image: siteUrl ? `${siteUrl}/dojo-logo.png` : "/dojo-logo.png",
+        image: siteUrl ? `${siteUrl}/dojo-logo.webp` : "/dojo-logo.webp",
         sameAs: [facebookUrl],
         address: {
           "@type": "PostalAddress",
@@ -204,7 +204,7 @@ export default function Locations() {
           description: `Traditional Karate classes at ${dojo.venue}.`,
           sport: ["Karate", "Martial Arts"],
           areaServed: ["Victoria, BC", "Duncan, BC", "Vancouver Island, BC"],
-          image: siteUrl ? `${siteUrl}/dojo-logo.png` : "/dojo-logo.png",
+          image: siteUrl ? `${siteUrl}/dojo-logo.webp` : "/dojo-logo.webp",
           parentOrganization: {
             "@id": organizationId,
           },
