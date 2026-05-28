@@ -34,6 +34,7 @@ CONTACT_TO_EMAIL=your-email@example.com
 CONTACT_FROM_EMAIL=Canada Budokai <no-reply@yourdomain.com>
 TURNSTILE_SECRET_KEY=your-turnstile-secret-key
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=your-turnstile-site-key
+CONTACT_ALLOWED_ORIGINS=https://yourdomain.com,https://www.yourdomain.com
 ```
 
 Notes:
@@ -43,6 +44,7 @@ Notes:
 - `NEXT_PUBLIC_TURNSTILE_SITE_KEY` is the Cloudflare Turnstile site key used in the contact form.
 - `TURNSTILE_SECRET_KEY` is the server-side secret used to verify Turnstile tokens.
 - The contact API also applies a rate limit of 5 requests per 10 minutes per IP.
+- `CONTACT_ALLOWED_ORIGINS` is optional and can be used to explicitly allow trusted origins for the contact endpoint.
 
 ## Learn More
 

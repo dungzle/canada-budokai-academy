@@ -15,8 +15,11 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const NAME_REGEX = /^[\p{L}\p{M}\s.'-]+$/u;
 const RATE_LIMIT_MAX_REQUESTS = 5;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_CLEANUP_INTERVAL_MS = 60 * 1000;
+const RATE_LIMIT_MAX_TRACKED_IPS = 2000;
 
 const requestLog = new Map<string, number[]>();
+let lastRateLimitCleanupAt = 0;
 
 type ContactPayload = {
   name?: unknown;
@@ -48,7 +51,72 @@ const sanitizeMessage = (value: unknown) =>
 const hasHeaderInjectionChars = (value: unknown) =>
   /[\r\n]/.test(toStringOrEmpty(value));
 
+const normalizeOrigin = (value: string) => {
+  try {
+    return new URL(value).origin;
+  } catch {
+    return undefined;
+  }
+};
+
+const trustedOrigins = (() => {
+  const rawOrigins = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    ...(process.env.CONTACT_ALLOWED_ORIGINS?.split(",") ?? []),
+  ];
+
+  const origins = new Set<string>();
+
+  for (const rawOrigin of rawOrigins) {
+    const origin = normalizeOrigin((rawOrigin ?? "").trim());
+
+    if (origin) {
+      origins.add(origin);
+    }
+  }
+
+  return origins;
+})();
+
+const isAllowedRequestOrigin = (request: Request) => {
+  const originHeader = request.headers.get("origin")?.trim();
+
+  // Non-browser traffic (without Origin) can still submit forms via scripts.
+  if (!originHeader) {
+    return true;
+  }
+
+  const requestOrigin = normalizeOrigin(originHeader);
+
+  if (!requestOrigin) {
+    return false;
+  }
+
+  if (trustedOrigins.size === 0) {
+    if (process.env.NODE_ENV !== "production") {
+      return true;
+    }
+
+    const host =
+      request.headers.get("x-forwarded-host") ?? request.headers.get("host");
+    const protocol = request.headers.get("x-forwarded-proto") ?? "https";
+
+    if (!host) {
+      return false;
+    }
+
+    return requestOrigin === `${protocol}://${host}`;
+  }
+
+  return trustedOrigins.has(requestOrigin);
+};
+
 const getClientIp = (request: Request) => {
+  const cfIp = request.headers.get("cf-connecting-ip");
+  if (cfIp) {
+    return cfIp;
+  }
+
   const forwardedFor = request.headers.get("x-forwarded-for");
   if (forwardedFor) {
     return forwardedFor.split(",")[0]?.trim() ?? "unknown";
@@ -57,8 +125,39 @@ const getClientIp = (request: Request) => {
   return request.headers.get("x-real-ip") ?? "unknown";
 };
 
+const cleanupRateLimitLog = (now: number) => {
+  if (now - lastRateLimitCleanupAt < RATE_LIMIT_CLEANUP_INTERVAL_MS) {
+    return;
+  }
+
+  const start = now - RATE_LIMIT_WINDOW_MS;
+
+  for (const [ip, timestamps] of requestLog.entries()) {
+    const recent = timestamps.filter((timestamp) => timestamp > start);
+
+    if (recent.length > 0) {
+      requestLog.set(ip, recent);
+      continue;
+    }
+
+    requestLog.delete(ip);
+  }
+
+  lastRateLimitCleanupAt = now;
+};
+
 const isRateLimited = (ip: string) => {
   const now = Date.now();
+  cleanupRateLimitLog(now);
+
+  // Keep bounded memory usage even under broad, low-volume probing.
+  if (requestLog.size > RATE_LIMIT_MAX_TRACKED_IPS) {
+    const oldestTrackedIp = requestLog.keys().next().value;
+    if (oldestTrackedIp) {
+      requestLog.delete(oldestTrackedIp);
+    }
+  }
+
   const start = now - RATE_LIMIT_WINDOW_MS;
   const timestamps = requestLog.get(ip) ?? [];
   const recent = timestamps.filter((timestamp) => timestamp > start);
@@ -120,6 +219,13 @@ const verifyTurnstile = async (token: string, remoteip: string) => {
 
 export async function POST(request: Request) {
   try {
+    if (!isAllowedRequestOrigin(request)) {
+      return NextResponse.json(
+        { message: "Request origin is not allowed." },
+        { status: 403 },
+      );
+    }
+
     const clientIp = getClientIp(request);
     if (isRateLimited(clientIp)) {
       return NextResponse.json(
