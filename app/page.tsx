@@ -12,10 +12,12 @@ const siteUrl = getSiteUrl();
 const facebookUrl = "https://www.facebook.com/CanadaBudokaiAcademy";
 
 export const metadata: Metadata = {
-  title:
-    "Canada Budokai Academy | Karate & Martial Arts Classes in Victoria and Duncan, BC",
+  title: {
+    absolute:
+      "Canada Budokai Academy | Karate Classes in Victoria & Duncan, BC",
+  },
   description:
-    "Canada Budokai Academy offers traditional Karate and classical martial arts training at our dojos in Victoria and Duncan, BC, welcoming youth and adult students of all experience levels.",
+    "Traditional Karate and martial arts classes in Victoria and Duncan, BC for youth and adults. Beginner-friendly training and free trial options.",
   keywords: [
     "karate victoria bc",
     "karate duncan bc",
@@ -28,18 +30,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    title:
-      "Canada Budokai Academy | Karate & Martial Arts Classes in Victoria and Duncan, BC",
+    title: "Canada Budokai Academy | Karate Classes in Victoria & Duncan, BC",
     description:
-      "Canada Budokai Academy offers traditional Karate and classical martial arts training at our dojos in Victoria and Duncan, BC, welcoming youth and adult students of all experience levels.",
+      "Traditional Karate and martial arts classes in Victoria and Duncan, BC for youth and adults. Beginner-friendly training and free trial options.",
     url: "/",
   },
   twitter: {
     ...SHARED_TWITTER,
-    title:
-      "Canada Budokai Academy | Karate & Martial Arts Classes in Victoria and Duncan, BC",
+    title: "Canada Budokai Academy | Karate Classes in Victoria & Duncan, BC",
     description:
-      "Canada Budokai Academy offers traditional Karate and classical martial arts training at our dojos in Victoria and Duncan, BC, welcoming youth and adult students of all experience levels.",
+      "Traditional Karate and martial arts classes in Victoria and Duncan, BC for youth and adults. Beginner-friendly training and free trial options.",
   },
 };
 

@@ -4,7 +4,10 @@ import ActionButton from "@/components/ui/ActionButton";
 import { SHARED_OPEN_GRAPH, SHARED_TWITTER } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Traditional Karate Training in Victoria & Duncan, BC",
+  title: {
+    absolute:
+      "Canada Budokai Academy | Karate Training in Victoria & Duncan, BC",
+  },
   description:
     "Explore our lineage-based karate curriculum in Victoria and Duncan, BC, including classical disciplines, self-defense application, and Budo-based training.",
   alternates: {
@@ -12,14 +15,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    title: "Traditional Karate Training in Victoria & Duncan, BC",
+    title: "Canada Budokai Academy | Karate Training in Victoria & Duncan, BC",
     description:
       "Explore our lineage-based karate curriculum in Victoria and Duncan, BC, including classical disciplines, self-defense application, and Budo-based training.",
     url: "/about/our-practice",
   },
   twitter: {
     ...SHARED_TWITTER,
-    title: "Traditional Karate Training in Victoria & Duncan, BC",
+    title: "Canada Budokai Academy | Karate Training in Victoria & Duncan, BC",
     description:
       "Explore our lineage-based karate curriculum in Victoria and Duncan, BC, including classical disciplines, self-defense application, and Budo-based training.",
   },
