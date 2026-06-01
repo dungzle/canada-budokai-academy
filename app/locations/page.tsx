@@ -5,7 +5,7 @@ import { SHARED_OPEN_GRAPH, SHARED_TWITTER } from "@/lib/seo";
 import { getSiteUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
-  title: "Karate Locations & Schedules in Victoria & Duncan, BC",
+  title: "Karate Locations & Schedule",
   description:
     "Explore Canada Budokai Academy dojo locations and karate class schedules in Victoria, BC, Duncan, BC, and across Vancouver Island.",
   keywords: [
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    title: "Karate Locations & Schedules in Victoria & Duncan, BC",
+    title: "Karate Locations & Schedule in Victoria & Duncan, BC",
     description:
       "Explore Canada Budokai Academy dojo locations and karate class schedules in Victoria, BC, Duncan, BC, and across Vancouver Island.",
     url: "/locations",
   },
   twitter: {
     ...SHARED_TWITTER,
-    title: "Karate Locations & Schedules in Victoria & Duncan, BC",
+    title: "Karate Locations & Schedule in Victoria & Duncan, BC",
     description:
       "Explore Canada Budokai Academy dojo locations and karate class schedules in Victoria, BC, Duncan, BC, and across Vancouver Island.",
   },

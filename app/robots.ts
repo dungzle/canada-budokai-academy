@@ -11,6 +11,5 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
     },
     sitemap: siteUrl ? `${siteUrl}/sitemap.xml` : undefined,
-    host: siteUrl,
   };
 }
