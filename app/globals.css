@@ -5,6 +5,7 @@
   --foreground: #111111;
   --surface-muted: #f3f2ee;
   --border-subtle: #e5e3dc;
+  color-scheme: light;
 
   --header-height: 80px;
 }
@@ -28,15 +29,6 @@
   --font-serif: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
   --font-kanji: "Noto Serif JP", serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a1110;
-    --foreground: #ededed;
-    --surface-muted: #121414;
-    --border-subtle: #1f2323;
-  }
 }
 
 body {

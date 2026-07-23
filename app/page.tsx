@@ -14,10 +14,10 @@ const facebookUrl = "https://www.facebook.com/CanadaBudokaiAcademy";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Canada Budokai Academy | Karate Classes in Victoria & Duncan, BC",
+      "Karate Victoria BC & Duncan BC | Canada Budokai Academy",
   },
   description:
-    "Traditional Karate and martial arts classes in Victoria and Duncan, BC for youth and adults. Beginner-friendly training and free trial options.",
+    "Canada Budokai Academy offers traditional martial arts classes in Victoria BC and Duncan BC for youth and adults, with beginner-friendly training and free trial options.",
   keywords: [
     "karate victoria bc",
     "karate duncan bc",
@@ -30,16 +30,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    title: "Canada Budokai Academy | Karate Classes in Victoria & Duncan, BC",
+    title: "Karate Victoria BC & Duncan BC | Canada Budokai Academy",
     description:
-      "Traditional Karate and martial arts classes in Victoria and Duncan, BC for youth and adults. Beginner-friendly training and free trial options.",
+      "Canada Budokai Academy offers traditional martial arts classes in Victoria BC and Duncan BC for youth and adults, with beginner-friendly training and free trial options.",
     url: "/",
   },
   twitter: {
     ...SHARED_TWITTER,
-    title: "Canada Budokai Academy | Karate Classes in Victoria & Duncan, BC",
+    title: "Karate Victoria BC & Duncan BC | Canada Budokai Academy",
     description:
-      "Traditional Karate and martial arts classes in Victoria and Duncan, BC for youth and adults. Beginner-friendly training and free trial options.",
+      "Traditional Karate and martial arts classes in Victoria and Duncan, BC for youth and adults.",
   },
 };
 
@@ -62,6 +62,8 @@ export default function Home() {
         },
         areaServed: ["Victoria, BC", "Duncan, BC", "Vancouver Island, BC"],
         sport: ["Karate", "Martial Arts"],
+        keywords:
+          "karate victoria bc, martial arts victoria bc, karate duncan bc, martial arts duncan bc",
         url: siteUrl,
         image: siteUrl ? `${siteUrl}/dojo-logo.webp` : "/dojo-logo.webp",
         logo: siteUrl ? `${siteUrl}/dojo-logo.webp` : "/dojo-logo.webp",

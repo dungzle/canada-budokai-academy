@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 
 import { getSiteUrl } from "@/lib/site-url";
 
+export const revalidate = false;
+
 export default function robots(): MetadataRoute.Robots {
   const siteUrl = getSiteUrl();
 
@@ -10,6 +12,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
+    host: siteUrl ?? undefined,
     sitemap: siteUrl ? `${siteUrl}/sitemap.xml` : undefined,
   };
 }

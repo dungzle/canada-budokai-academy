@@ -18,6 +18,7 @@ const CONTENT_SECURITY_POLICY = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  output: "export",
   async headers() {
     return [
       {

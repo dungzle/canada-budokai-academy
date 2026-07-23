@@ -5,9 +5,9 @@ import { SHARED_OPEN_GRAPH, SHARED_TWITTER } from "@/lib/seo";
 import { getSiteUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
-  title: "Karate Locations & Schedule",
+  title: "Karate Victoria BC & Duncan BC | Locations",
   description:
-    "Explore Canada Budokai Academy dojo locations and karate class schedules in Victoria, BC, Duncan, BC, and across Vancouver Island.",
+    "Explore Canada Budokai Academy dojo locations and karate class schedules in Victoria BC, Duncan BC, and across Vancouver Island.",
   keywords: [
     "karate victoria bc",
     "martial arts victoria bc",
@@ -25,16 +25,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    title: "Karate Locations & Schedule in Victoria & Duncan, BC",
+    title: "Karate Victoria BC & Duncan BC | Locations",
     description:
-      "Explore Canada Budokai Academy dojo locations and karate class schedules in Victoria, BC, Duncan, BC, and across Vancouver Island.",
+      "Explore Canada Budokai Academy dojo locations and karate class schedules in Victoria BC, Duncan BC, and across Vancouver Island.",
     url: "/locations",
   },
   twitter: {
     ...SHARED_TWITTER,
-    title: "Karate Locations & Schedule in Victoria & Duncan, BC",
+    title: "Karate Victoria BC & Duncan BC | Locations",
     description:
-      "Explore Canada Budokai Academy dojo locations and karate class schedules in Victoria, BC, Duncan, BC, and across Vancouver Island.",
+      "Explore Canada Budokai Academy dojo locations and karate class schedules in Victoria BC, Duncan BC, and across Vancouver Island.",
   },
 };
 
@@ -183,6 +183,8 @@ export default function Locations() {
         name: "Canada Budokai Academy",
         description:
           "Traditional Karate and classical martial arts training in Victoria and Duncan, BC.",
+        keywords:
+          "karate victoria bc, martial arts victoria bc, karate duncan bc, martial arts duncan bc",
         url: siteUrl,
         image: siteUrl ? `${siteUrl}/dojo-logo.webp` : "/dojo-logo.webp",
         sameAs: [facebookUrl],
@@ -202,6 +204,7 @@ export default function Locations() {
             : `#dojo-${index + 1}`,
           name: `${dojo.name} - Canada Budokai Academy`,
           description: `Traditional Karate classes at ${dojo.venue}.`,
+          keywords: `${dojo.city} BC karate, ${dojo.city} BC martial arts, traditional karate classes`,
           sport: ["Karate", "Martial Arts"],
           areaServed: ["Victoria, BC", "Duncan, BC", "Vancouver Island, BC"],
           image: siteUrl ? `${siteUrl}/dojo-logo.webp` : "/dojo-logo.webp",
@@ -238,8 +241,8 @@ export default function Locations() {
           </h1>
           <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
           <p className="max-w-5xl text-stone-300 text-sm md:text-base leading-relaxed">
-            Our Victoria and Duncan, BC dojos welcome youth and adult students
-            of all experience levels, from beginners to experienced
+            Our Victoria BC and Duncan, BC dojos welcome youth and adult
+            students of all experience levels, from beginners to experienced
             practitioners, with training rooted in traditional Karate, classical
             martial arts, and the principles of Budo.
           </p>

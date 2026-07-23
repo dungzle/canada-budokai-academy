@@ -4,24 +4,32 @@ import ActionButton from "@/components/ui/ActionButton";
 import { SHARED_OPEN_GRAPH, SHARED_TWITTER } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "FAQs",
+  title: "FAQs - Karate Victoria BC & Duncan BC",
   description:
-    "Answers to common questions about karate classes, uniforms, gradings, and free trial training in Victoria and Duncan, BC.",
+    "Answers to common questions about Karate Victoria BC and martial arts Duncan BC classes, uniforms, gradings, and free trial training.",
+  keywords: [
+    "karate victoria bc",
+    "martial arts victoria bc",
+    "karate duncan bc",
+    "martial arts duncan bc",
+    "karate class faq victoria",
+    "karate trial class duncan",
+  ],
   alternates: {
     canonical: "/faq",
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    title: "FAQs",
+    title: "FAQs - Karate Victoria BC & Duncan BC",
     description:
-      "Answers to common questions about karate classes, uniforms, gradings, and free trial training in Victoria and Duncan, BC.",
+      "Answers to common questions about Karate and martial arts classes in Victoria BC and Duncan BC.",
     url: "/faq",
   },
   twitter: {
     ...SHARED_TWITTER,
-    title: "FAQs",
+    title: "FAQs - Karate Victoria BC & Duncan BC",
     description:
-      "Answers to common questions about karate classes, uniforms, gradings, and free trial training in Victoria and Duncan, BC.",
+      "Answers to common questions about Karate and martial arts classes in Victoria BC and Duncan BC.",
   },
 };
 
@@ -96,8 +104,9 @@ export default function FAQ() {
           </h1>
           <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
           <p className="max-w-5xl text-stone-300 text-sm md:text-base leading-relaxed">
-            Clear answers to common questions about training, uniforms, grading,
-            and the traditions of Canada Budokai Academy.
+            Clear answers to common questions about Karate classes in Victoria
+            and Duncan, BC, including training, uniforms, grading, and free
+            trial options.
           </p>
         </div>
       </section>

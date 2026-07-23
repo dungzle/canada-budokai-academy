@@ -24,11 +24,11 @@ export const metadata: Metadata = {
   metadataBase: siteUrl ? new URL(siteUrl) : undefined,
   title: {
     default:
-      "Canada Budokai Academy | Karate & Martial Arts in Victoria and Duncan, BC",
+      "Canada Budokai Academy | Karate & Martial Arts in Victoria BC and Duncan BC",
     template: "%s | Canada Budokai Academy",
   },
   description:
-    "Canada Budokai Academy offers traditional Karate and classical martial arts training in Victoria and Duncan, BC, serving students across Vancouver Island. Beginner-friendly classes and free trial options.",
+    "Canada Budokai Academy offers traditional Karate in Victoria BC and Duncan BC. Join beginner-friendly martial arts classes for youth and adults across Vancouver Island with free trial options.",
   keywords: [
     "karate victoria bc",
     "martial arts victoria bc",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
   openGraph: {
     ...SHARED_OPEN_GRAPH,
     title:
-      "Canada Budokai Academy | Karate & Martial Arts in Victoria and Duncan, BC",
+      "Canada Budokai Academy | Karate & Martial Arts in Victoria BC and Duncan BC",
     description:
-      "Train in traditional Karate and classical martial arts in Victoria and Duncan, BC with Canada Budokai Academy.",
+      "Train in traditional Karate and martial arts in Victoria BC and Duncan BC with Canada Budokai Academy.",
   },
   twitter: {
     ...SHARED_TWITTER,
