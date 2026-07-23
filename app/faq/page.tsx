@@ -4,7 +4,7 @@ import ActionButton from "@/components/ui/ActionButton";
 import { SHARED_OPEN_GRAPH, SHARED_TWITTER } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Karate Victoria BC & Duncan BC FAQ",
+  title: "FAQs - Karate Victoria BC & Duncan BC",
   description:
     "Answers to common questions about Karate Victoria BC and martial arts Duncan BC classes, uniforms, gradings, and free trial training.",
   keywords: [
@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    title: "Karate Victoria BC & Duncan BC FAQ",
+    title: "FAQs - Karate Victoria BC & Duncan BC",
     description:
       "Answers to common questions about Karate and martial arts classes in Victoria BC and Duncan BC.",
     url: "/faq",
   },
   twitter: {
     ...SHARED_TWITTER,
-    title: "Karate Victoria BC & Duncan BC FAQ",
+    title: "FAQs - Karate Victoria BC & Duncan BC",
     description:
       "Answers to common questions about Karate and martial arts classes in Victoria BC and Duncan BC.",
   },

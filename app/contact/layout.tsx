@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { SHARED_OPEN_GRAPH, SHARED_TWITTER } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Contact Karate Dojo in Victoria BC & Duncan, BC",
+  title: "Contact Us - Karate Dojos in Victoria BC & Duncan BC",
   description:
     "Contact Canada Budokai Academy for Karate Victoria BC and Duncan BC class inquiries, schedules, and free trial booking.",
   keywords: [
@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     ...SHARED_OPEN_GRAPH,
-    title: "Contact Karate Dojo in Victoria BC & Duncan, BC",
+    title: "Contact Us - Karate Dojos in Victoria BC & Duncan BC",
     description:
       "Contact Canada Budokai Academy for Karate Victoria BC and Duncan BC class inquiries and free trial booking.",
     url: "/contact",
   },
   twitter: {
     ...SHARED_TWITTER,
-    title: "Contact Karate Dojo in Victoria BC & Duncan, BC",
+    title: "Contact Us - Karate Dojos in Victoria BC & Duncan BC",
     description:
       "Contact Canada Budokai Academy for class inquiries in Victoria BC and Duncan BC.",
   },
