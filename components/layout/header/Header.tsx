@@ -1,7 +1,6 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -70,11 +69,9 @@ export default function Header() {
             onClick={handleLogoClick}
             className="flex items-center gap-2 lg:gap-4 cursor-pointer transition-all duration-300"
           >
-            <Image
+            <img
               src="/dojo-logo.webp"
               alt="Canada Budokai Academy Logo"
-              width={100}
-              height={100}
               className={`transition-all duration-500 h-10 md:h-14 w-auto object-contain shrink-0`}
             />
             <span className="font-sans font-bold text-sm md:text-xl tracking-tight transition-all duration-300 text-white wrap-break-word">
@@ -129,11 +126,10 @@ export default function Header() {
                 setMenuOpen(false);
               }}
             >
-              <Image
+              <img
                 src="/dojo-logo.webp"
                 alt="Canada Budokai Academy Logo"
-                width={66}
-                height={66}
+                className="h-16 w-auto object-contain"
               />
             </Link>
             <button

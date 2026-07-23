@@ -19,6 +19,9 @@ const CONTENT_SECURITY_POLICY = [
 
 const nextConfig: NextConfig = {
   output: "export",
+  images: {
+    unoptimized: true,
+  },
   async headers() {
     return [
       {

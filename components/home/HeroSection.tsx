@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import ActionButton from "@/components/ui/ActionButton";
 
 export default function HeroSection() {
@@ -7,13 +5,10 @@ export default function HeroSection() {
     <section className="bg-black pt-4">
       <div className="container relative mx-auto px-6 text-white max-w-6xl rounded-3xl p-6">
         <div className="flex justify-center">
-          <Image
+          <img
             src="/dojo-logo.webp"
             alt="Canada Budokai Academy Logo"
-            width={1200}
-            height={1200}
             className="h-40 w-auto object-contain brightness-110 drop-shadow-xl md:h-52 xl:h-64"
-            priority
           />
         </div>
 
