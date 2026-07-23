@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Footer() {
   return (
     <footer className="bg-black text-stone-500 py-4 border-t border-gold-600/40">
@@ -7,11 +5,9 @@ export default function Footer() {
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center text-center gap-6 lg:flex-row lg:items-center lg:justify-between lg:text-left">
             <div className="flex items-center gap-2 lg:gap-4 cursor-pointer transition-all duration-300">
-              <Image
+              <img
                 src="/dojo-logo.webp"
                 alt="Canada Budokai Academy Logo"
-                width={100}
-                height={100}
                 className="h-16 w-auto object-contain brightness-110"
               />
               <span className="font-sans font-bold text-xl text-white tracking-widest">
