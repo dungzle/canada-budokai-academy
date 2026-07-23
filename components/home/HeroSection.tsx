@@ -32,7 +32,7 @@ export default function HeroSection() {
             </p>
             <p>
               Traditional Karate and classical martial arts training in Victoria
-              and Duncan, BC.
+              BC and Duncan BC.
             </p>
           </div>
 

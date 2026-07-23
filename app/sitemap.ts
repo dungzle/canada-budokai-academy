@@ -20,14 +20,14 @@ const routeSeoHints: Record<
     priority: number;
   }
 > = {
-  "": { changeFrequency: "monthly", priority: 1 },
+  "": { changeFrequency: "weekly", priority: 1 },
   "/about/our-philosophy": { changeFrequency: "yearly", priority: 0.7 },
   "/about/our-practice": { changeFrequency: "yearly", priority: 0.7 },
   "/about/instructors": { changeFrequency: "yearly", priority: 0.7 },
   "/about/dnbk": { changeFrequency: "yearly", priority: 0.6 },
-  "/locations": { changeFrequency: "monthly", priority: 0.9 },
-  "/faq": { changeFrequency: "monthly", priority: 0.8 },
-  "/contact": { changeFrequency: "monthly", priority: 0.8 },
+  "/locations": { changeFrequency: "weekly", priority: 0.95 },
+  "/faq": { changeFrequency: "monthly", priority: 0.85 },
+  "/contact": { changeFrequency: "monthly", priority: 0.85 },
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {

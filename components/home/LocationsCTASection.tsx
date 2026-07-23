@@ -9,10 +9,12 @@ export default function LocationsCTASection() {
         </h2>
 
         <div className="my-8 text-sm md:text-base text-neutral-700 leading-relaxed max-w-3xl mx-auto">
-          <p className="mb-2">
-            At Canada Budokai Academy, traditional Karate and classical martial
-            arts training are rooted in Budo, a lifelong path of discipline,
-            resilience, self-discovery, and character development.
+          <p className="mb-4">
+            Canada Budokai Academy dojos are certified by the Dai Nippon Butoku
+            Kai, reflecting our dedication to traditional Karate and classical
+            martial arts grounded in the principles of Budo. This lifelong path
+            encourages discipline, resilience, self-discovery, and character
+            development.
           </p>
 
           <p>
