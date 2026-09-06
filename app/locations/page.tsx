@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 
 import ActionButton from "@/components/ui/ActionButton";
+import FacebookIcon from "@/components/ui/FacebookIcon";
+import { dojos } from "@/lib/constants";
 import { SHARED_OPEN_GRAPH, SHARED_TWITTER } from "@/lib/seo";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -39,42 +41,6 @@ export const metadata: Metadata = {
 };
 
 const siteUrl = getSiteUrl();
-const facebookUrl = "https://www.facebook.com/CanadaBudokaiAcademy";
-
-const dojos = [
-  {
-    name: "CARSA Honbu dojo",
-    venue: "CARSA University of Victoria",
-    address: "3800 Finnerty Rd, Victoria, BC",
-    city: "Victoria",
-    mapsUrl: "https://maps.app.goo.gl/6YGjvT35znpxZ2Ho9",
-    classes: [
-      { day: "Tuesday", level: "All levels", time: "6:00pm-8:00pm" },
-      { day: "Thursday", level: "Advanced", time: "6:00pm-8:00pm" },
-      { day: "Friday", level: "All levels", time: "6:00pm-8:00pm" },
-    ],
-  },
-  {
-    name: "Vimy dojo",
-    venue: "Vimy Community Hall",
-    address: "3968 Gibbins Rd, Duncan, BC",
-    city: "Duncan",
-    mapsUrl: "https://maps.app.goo.gl/DUijgqhGBD2hPrWR8",
-    classes: [
-      { day: "Monday", level: "All levels", time: "6:00pm-8:00pm" },
-      { day: "Wednesday", level: "All levels", time: "6:00pm-8:00pm" },
-      { day: "Thursday", level: "All levels", time: "6:00pm-8:00pm" },
-    ],
-  },
-  {
-    name: "QMS dojo",
-    venue: "Queen Margaret's School",
-    address: "660 Brownsey Ave, Duncan, BC",
-    city: "Duncan",
-    mapsUrl: "https://maps.app.goo.gl/R89Y9P64WRW4AZmg9",
-    classes: [],
-  },
-] as const;
 
 const dayToSchemaDay: Record<string, string> = {
   Monday: "https://schema.org/Monday",
@@ -91,6 +57,7 @@ function to24Hour(time: string): string {
     .trim()
     .toLowerCase()
     .split(/\s*(am|pm)$/);
+
   const meridiem = meridiemRaw?.toLowerCase();
   const [hoursRaw, minutesRaw] = timePart.split(":");
 
@@ -100,11 +67,15 @@ function to24Hour(time: string): string {
   if (meridiem === "pm" && hours !== 12) {
     hours += 12;
   }
+
   if (meridiem === "am" && hours === 12) {
     hours = 0;
   }
 
-  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(
+    2,
+    "0",
+  )}`;
 }
 
 function toOpeningHoursSpecification(
@@ -174,6 +145,7 @@ function ArrowIcon() {
 
 export default function Locations() {
   const organizationId = siteUrl ? `${siteUrl}/#organization` : "#organization";
+
   const locationsSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -187,7 +159,6 @@ export default function Locations() {
           "karate victoria bc, martial arts victoria bc, karate duncan bc, martial arts duncan bc",
         url: siteUrl,
         image: siteUrl ? `${siteUrl}/dojo-logo.webp` : "/dojo-logo.webp",
-        sameAs: [facebookUrl],
         address: {
           "@type": "PostalAddress",
           addressLocality: "Victoria",
@@ -220,7 +191,7 @@ export default function Locations() {
           },
           openingHoursSpecification: toOpeningHoursSpecification(dojo.classes),
           hasMap: dojo.mapsUrl,
-          sameAs: [dojo.mapsUrl],
+          sameAs: dojo.facebookUrl ? [dojo.facebookUrl] : undefined,
           url: siteUrl ? `${siteUrl}/locations` : "/locations",
         };
       }),
@@ -231,17 +202,22 @@ export default function Locations() {
     <div className="text-[var(--foreground)]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationsSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(locationsSchema),
+        }}
       />
+
       {/* HERO */}
-      <section className="relative overflow-hidden bg-black border-b border-gold-600/20 py-12 md:py-16">
-        <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
-          <h1 className="max-w-4xl text-3xl md:text-5xl lg:text-6xl font-semibold tracking-[0.03em] text-gold-500 font-serif">
+      <section className="relative overflow-hidden border-b border-gold-600/20 bg-black py-12 md:py-16">
+        <div className="container mx-auto max-w-9/10 px-4 xl:max-w-8/10">
+          <h1 className="max-w-4xl font-serif text-3xl font-semibold tracking-[0.03em] text-gold-500 md:text-5xl lg:text-6xl">
             Locations & Schedules
           </h1>
-          <div className="w-20 h-0.5 opacity-80 bg-gold-500 my-6" />
-          <p className="max-w-5xl text-stone-300 text-sm md:text-base leading-relaxed">
-            Our Victoria BC and Duncan, BC dojos welcome youth and adult
+
+          <div className="my-6 h-0.5 w-20 bg-gold-500 opacity-80" />
+
+          <p className="max-w-5xl text-sm leading-relaxed text-stone-300 md:text-base">
+            Our Victoria, BC and Duncan, BC dojos welcome youth and adult
             students of all experience levels, from beginners to experienced
             practitioners, with training rooted in traditional Karate, classical
             martial arts, and the principles of Budo.
@@ -249,40 +225,59 @@ export default function Locations() {
         </div>
       </section>
 
-      <section className="py-8 lg:py-16 bg-[var(--surface-muted)]">
-        <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4">
+      {/* LOCATIONS */}
+      <section className="bg-[var(--surface-muted)] py-8 lg:py-16">
+        <div className="container mx-auto max-w-9/10 px-4 xl:max-w-8/10">
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {dojos.map((dojo) => (
               <article
                 key={dojo.name}
-                className="flex h-full flex-col rounded-2xl border border-[var(--border-subtle)]/80 p-6 bg-white shadow-[0_20px_40px_-30px_rgba(0,0,0,0.45)]"
+                className="flex h-full flex-col rounded-2xl border border-[var(--border-subtle)]/80 bg-white p-6 shadow-[0_20px_40px_-30px_rgba(0,0,0,0.45)]"
               >
-                <h2 className="text-xl font-serif font-semibold text-gold-600 md:text-2xl">
-                  {dojo.name}
-                </h2>
+                <div className="flex items-start justify-between gap-4">
+                  <h2 className="font-serif text-xl font-semibold text-gold-600 md:text-2xl">
+                    {dojo.name}
+                  </h2>
 
-                <div className="mt-4 space-y-3">
+                  {dojo.facebookUrl && (
+                    <a
+                      href={dojo.facebookUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit the ${dojo.name} Facebook page`}
+                      title={`${dojo.name} on Facebook`}
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center text-gold-700 transition-opacity hover:opacity-70"
+                    >
+                      <FacebookIcon className="h-6 w-6 md:h-7 md:w-7 lg:h-8 lg:w-8" />
+                    </a>
+                  )}
+                </div>
+
+                <div className="mt-4">
                   <div className="flex items-start gap-2 text-sm text-neutral-700">
-                    <span className="mt-0.5 text-gold-700">
+                    <span className="mt-0.5 shrink-0 text-gold-700">
                       <LocationIcon />
                     </span>
-                    <p>
-                      <span className="block font-medium text-neutral-800">
-                        {dojo.venue}
-                      </span>
-                      <span>{dojo.address}</span>
-                    </p>
-                  </div>
 
-                  <a
-                    href={dojo.mapsUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-gold-700 transition-colors hover:text-gold-600"
-                  >
-                    Get directions
-                    <ArrowIcon />
-                  </a>
+                    <div>
+                      <p>
+                        <span className="block font-medium text-neutral-800">
+                          {dojo.venue}
+                        </span>
+                        <span>{dojo.address}</span>
+                      </p>
+
+                      <a
+                        href={dojo.mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex items-center gap-1.5 font-semibold text-gold-700 transition-colors hover:text-gold-600"
+                      >
+                        Get directions
+                        <ArrowIcon />
+                      </a>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="mt-6 rounded-xl border border-[var(--border-subtle)] bg-white/50 p-4">
@@ -292,6 +287,7 @@ export default function Locations() {
                     </span>
                     Weekly schedule
                   </div>
+
                   {dojo.classes.length > 0 ? (
                     <ul className="space-y-2 text-sm text-neutral-700">
                       {dojo.classes.map((item) => (
@@ -302,6 +298,7 @@ export default function Locations() {
                           <span className="font-medium text-neutral-900">
                             {item.day}
                           </span>
+
                           <span className="text-right">
                             <span className="block text-xs uppercase tracking-wide text-neutral-500">
                               {item.level}
@@ -323,12 +320,15 @@ export default function Locations() {
           </div>
         </div>
       </section>
-      <section className="py-10 lg:py-14 bg-[var(--background)] border-t border-[var(--border-subtle)]">
-        <div className="container mx-auto max-w-9/10 xl:max-w-8/10 px-4 text-center">
-          <p className="text-sm md:text-base text-neutral-600 leading-relaxed max-w-5xl mx-auto">
+
+      {/* CALL TO ACTION */}
+      <section className="border-t border-[var(--border-subtle)] bg-[var(--background)] py-10 lg:py-14">
+        <div className="container mx-auto max-w-9/10 px-4 text-center xl:max-w-8/10">
+          <p className="mx-auto max-w-5xl text-sm leading-relaxed text-neutral-600 md:text-base">
             Ready to begin? Schedule your free trial class and take the first
             step in your training.
           </p>
+
           <div className="mt-6 flex justify-center">
             <ActionButton href="/contact">
               Schedule a Free Trial Class
